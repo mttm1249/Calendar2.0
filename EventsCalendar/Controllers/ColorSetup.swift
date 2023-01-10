@@ -19,7 +19,7 @@ class ColorSetup: UIViewController, PikkoDelegate {
     weak var delegate: ColorUpdate?
 
     func writeBackColor(color: UIColor) {
-        ColorPalette.shared.colorIsChanged = true
+        ColorPalette.shared.themeIsChanged = true
         userDefaults.setColor(color: color, forKey: currentOption.key)
         delegate?.reloadColors()
     }

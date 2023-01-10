@@ -94,7 +94,9 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         let newEvent = EventModel(name: nameTF.text!, eventText: eventText.text!, isCompleted: false, eventDate: currentDate, priorityID: priorityID)
         if currentEvent != nil {
             try! realm.write {
-                // редактирование записи
+                currentEvent.name = newEvent.name
+                currentEvent.eventText = newEvent.eventText
+                currentEvent.priorityID = priorityID
             }
         } else {
             StorageManager.saveObject(newEvent)

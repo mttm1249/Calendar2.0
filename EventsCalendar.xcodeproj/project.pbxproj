@@ -35,6 +35,8 @@
 		DADF8B7E29675E260019A118 /* EventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF8B7D29675E260019A118 /* EventsManager.swift */; };
 		DADF8B8029675FA10019A118 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF8B7F29675FA10019A118 /* EventEditViewController.swift */; };
 		DADF8B8229676D400019A118 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF8B8129676D400019A118 /* EventViewController.swift */; };
+		DAFD84B5296D53C4008B7F73 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD84B4296D53C4008B7F73 /* Alerts.swift */; };
+		DAFD84B8296D5875008B7F73 /* WallpaperSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD84B7296D5875008B7F73 /* WallpaperSetup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		DADF8B7D29675E260019A118 /* EventsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsManager.swift; sourceTree = "<group>"; };
 		DADF8B7F29675FA10019A118 /* EventEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
 		DADF8B8129676D400019A118 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		DAFD84B4296D53C4008B7F73 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		DAFD84B7296D5875008B7F73 /* WallpaperSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperSetup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 				DAAE4CFB296976F600682675 /* Shadows.swift */,
 				DA00C104296B4A660091D13A /* ColorPalette.swift */,
 				DA6F8ABE296C02B20077DCDB /* ViewController - Extensions.swift */,
+				DAFD84B4296D53C4008B7F73 /* Alerts.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 				DAAE4CFD29698EF000682675 /* SearchTableViewController.swift */,
 				DAC54D5D296AD53B00125ADF /* SettingsViewController.swift */,
 				DAC54D68296AF32A00125ADF /* ColorSetup.swift */,
+				DAFD84B7296D5875008B7F73 /* WallpaperSetup.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -187,8 +193,7 @@
 			children = (
 				DAAEEA2C2968544000D8CD3B /* EventCell */,
 				DA50AE77296AD34B00825C36 /* ColorCell */,
-				DAC54D5F296AE05400125ADF /* ColorSettingsCell.xib */,
-				DAC54D61296AE0E100125ADF /* ColorSettingsTableViewCell.swift */,
+				DAFD84B6296D552B008B7F73 /* SettingsCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -200,6 +205,15 @@
 				DA06743E29682F1B00817FC8 /* EventTableViewCell.swift */,
 			);
 			path = EventCell;
+			sourceTree = "<group>";
+		};
+		DAFD84B6296D552B008B7F73 /* SettingsCell */ = {
+			isa = PBXGroup;
+			children = (
+				DAC54D5F296AE05400125ADF /* ColorSettingsCell.xib */,
+				DAC54D61296AE0E100125ADF /* ColorSettingsTableViewCell.swift */,
+			);
+			path = SettingsCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +318,8 @@
 				DAC54D62296AE0E100125ADF /* ColorSettingsTableViewCell.swift in Sources */,
 				DA067443296838E600817FC8 /* EventModel.swift in Sources */,
 				DADF8B7E29675E260019A118 /* EventsManager.swift in Sources */,
+				DAFD84B5296D53C4008B7F73 /* Alerts.swift in Sources */,
+				DAFD84B8296D5875008B7F73 /* WallpaperSetup.swift in Sources */,
 				DA00C105296B4A660091D13A /* ColorPalette.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

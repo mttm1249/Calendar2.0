@@ -21,9 +21,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbu-X8-LCJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dag-Qc-H9S">
-                                <rect key="frame" x="53" y="12" width="295" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dag-Qc-H9S">
+                                <rect key="frame" x="38" y="12" width="310" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -36,7 +36,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8M9-ZB-Ohu">
-                                <rect key="frame" x="355" y="13.666666666666671" width="30" height="16.999999999999993"/>
+                                <rect key="frame" x="364.66666666666669" y="13.666666666666671" width="20.333333333333314" height="16.999999999999993"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <imageReference key="image" image="chevron.right" catalog="system" symbolScale="small"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="small"/>
@@ -44,18 +44,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.90433567880794707" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="8M9-ZB-Ohu" secondAttribute="bottom" constant="7" id="2w4-gt-dhf"/>
-                            <constraint firstItem="dag-Qc-H9S" firstAttribute="leading" secondItem="ZMs-Xa-9ft" secondAttribute="trailing" constant="33" id="5iv-Zr-v3U"/>
+                            <constraint firstItem="dag-Qc-H9S" firstAttribute="leading" secondItem="ZMs-Xa-9ft" secondAttribute="trailing" constant="18" id="5iv-Zr-v3U"/>
+                            <constraint firstItem="8M9-ZB-Ohu" firstAttribute="top" secondItem="bbu-X8-LCJ" secondAttribute="top" constant="7" id="BHR-od-Ucq"/>
                             <constraint firstAttribute="height" constant="44" id="J0v-yj-d2I"/>
-                            <constraint firstItem="8M9-ZB-Ohu" firstAttribute="height" secondItem="bbu-X8-LCJ" secondAttribute="height" multiplier="0.681818" id="R4X-ob-9gO"/>
-                            <constraint firstAttribute="trailing" secondItem="8M9-ZB-Ohu" secondAttribute="trailing" constant="8" id="RnW-KJ-UNA"/>
-                            <constraint firstItem="8M9-ZB-Ohu" firstAttribute="top" secondItem="bbu-X8-LCJ" secondAttribute="top" constant="7" id="V1E-80-Wqx"/>
                             <constraint firstItem="dag-Qc-H9S" firstAttribute="top" secondItem="bbu-X8-LCJ" secondAttribute="top" constant="12" id="X5a-M9-MUO"/>
+                            <constraint firstAttribute="trailing" secondItem="8M9-ZB-Ohu" secondAttribute="trailing" constant="8" id="csp-lq-DE6"/>
                             <constraint firstItem="ZMs-Xa-9ft" firstAttribute="top" secondItem="bbu-X8-LCJ" secondAttribute="top" id="ft6-14-LdB"/>
                             <constraint firstAttribute="bottom" secondItem="dag-Qc-H9S" secondAttribute="bottom" constant="11" id="hYQ-Bz-g1C"/>
                             <constraint firstAttribute="bottom" secondItem="ZMs-Xa-9ft" secondAttribute="bottom" id="vY3-Ve-Jhm"/>
                             <constraint firstAttribute="trailing" secondItem="dag-Qc-H9S" secondAttribute="trailing" constant="45" id="wj7-Gc-Lge"/>
-                            <constraint firstItem="8M9-ZB-Ohu" firstAttribute="width" secondItem="bbu-X8-LCJ" secondAttribute="width" multiplier="0.0763359" id="y85-l4-8Ot"/>
+                            <constraint firstAttribute="bottom" secondItem="8M9-ZB-Ohu" secondAttribute="bottom" constant="7" id="xj6-6M-ZUO"/>
                             <constraint firstItem="ZMs-Xa-9ft" firstAttribute="leading" secondItem="bbu-X8-LCJ" secondAttribute="leading" id="zq0-uk-uar"/>
                         </constraints>
                     </view>

@@ -66,15 +66,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                           SettingsOption(name: "Дни выбранного месяца", colorOption: color3, key: "color3"),
                           SettingsOption(name: "Дни следующего месяца", colorOption: color4, key: "color4"),
                           SettingsOption(name: "Цвет индикатора", colorOption: color5, key: "color5"),
-                          SettingsOption(name: "Цвет индикатора - выбранный", colorOption: color13, key: "color13"),
+                          SettingsOption(name: "Цвет индикатора (выбран)", colorOption: color13, key: "color13"),
                           SettingsOption(name: "Сегодняшний день", colorOption: color6, key: "color6"),
                           SettingsOption(name: "Выбранный день", colorOption: color7, key: "color7"),
                           SettingsOption(name: "Выбран сегодняшний день", colorOption: color8, key: "color8"),
                           SettingsOption(name: "Выходные дни", colorOption: color9, key:  "color9"),
                           SettingsOption(name: "Цвет выбранной даты", colorOption: color10, key: "color10"),
-                          SettingsOption(name: "Цвет фона", colorOption: color11, key: "color11"),
                           SettingsOption(name: "Кнопка добавления записи", colorOption: color12, key: "color12"),
-                          SettingsOption(name: "Выбрать обои", colorOption: .clear, id: 1)
+                          SettingsOption(name: "Цвет фона", colorOption: color11, key: "color11"),
+                          SettingsOption(name: "Обои", colorOption: .clear, id: 1)
         ]
         for color in colorTheme {
             options.append(color)
@@ -112,7 +112,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if options[indexPath.row].id != nil {
-            print("WALLPAPER EDIT")
+            performSegue(withIdentifier: "wallpaperSetup", sender: self)
         } else {
             performSegue(withIdentifier: "colorSetup", sender: self)
         }
@@ -121,6 +121,14 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+        
+    @IBAction func resetButtonAction(_ sender: Any) {
+        showAlert(title: "Внимание!", message: "Все настройки будут сброшены", okActionText: "ОК", cancelText: "Отмена") {
+            userDefaults.removeObject(forKey: "wallpaperImage")
+            userDefaults.set(false, forKey: "wallpaperSwitch")
+            ColorPalette.shared.themeIsChanged = true
+        }
     }
 }
 

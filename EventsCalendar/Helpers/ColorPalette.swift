@@ -10,7 +10,7 @@ import UIKit
 let userDefaults = UserDefaults.standard
 
 class ColorPalette {
-    var colorIsChanged = false
+    var themeIsChanged = false
     
     let color1  = #colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3019607843, alpha: 1)
     let color2  = #colorLiteral(red: 0.4406057274, green: 0.4770534495, blue: 0.5300029363, alpha: 1)

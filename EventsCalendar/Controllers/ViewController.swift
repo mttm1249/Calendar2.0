@@ -10,15 +10,16 @@ import FSCalendar
 import RealmSwift
 
 class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate, EventProtocol {
-
+    
     let feedbackGenerator = UIImpactFeedbackGenerator()
-
+    
     var defaultColors = [SettingsOption]()
     var eventsArray: Results<EventModel>!
     let time = Time()
     var selectedDate = Date()
     let roundAddButton = UIButton()
     
+    @IBOutlet weak var wallpaperImage: UIImageView!
     @IBOutlet var calendar: FSCalendar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -34,16 +35,29 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         setupAddButton()
         setupCalendar()
         setupTheme()
+        loadImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if ColorPalette.shared.colorIsChanged {
-            ColorPalette.shared.colorIsChanged = false
+        if ColorPalette.shared.themeIsChanged {
+            ColorPalette.shared.themeIsChanged = false
             setupTheme()
+            loadImage()
         }
         calendar.reloadData()
         tableView.reloadData()
+    }
+    
+    func loadImage() {
+        guard let data = UserDefaults.standard.data(forKey: "wallpaperImage") else { return }
+        let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
+        let image = UIImage(data: decoded)
+        if image != nil && userDefaults.bool(forKey: "wallpaperSwitch") == true {
+            wallpaperImage.image = image
+        } else if image == nil || userDefaults.bool(forKey: "wallpaperSwitch") == false {
+            wallpaperImage.image = UIImage()
+        }
     }
     
     // Register custom TableView cell
@@ -54,7 +68,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     
     // delegate method
     func addEvent(date: Date) {
-
+        
     }
     
     func setupTheme() {
@@ -63,6 +77,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
             setupCalendarAppearance()
         } else {
             setupCalendarAppearance()
+            loadImage()
         }
     }
     
@@ -109,12 +124,10 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
             let editVC = segue.destination as! EventEditViewController
             editVC.currentDate = selectedDate
             editVC.delegate = self
-        }
-        if segue.identifier == "showDetails" {
-            let eventVC = segue.destination as! EventViewController
+            
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray).reversed()[indexPath.row]
-            eventVC.currentEvent = event
+            editVC.currentEvent = event
         }
     }
     
@@ -154,15 +167,17 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showDetails", sender: self)
+        performSegue(withIdentifier: "addRecord", sender: self)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray).reversed()[indexPath.row]
-            StorageManager.deleteObject(event)
-            tableView.deleteRows(at: [indexPath].reversed(), with: .left)
-            calendar.reloadData()
+            showAlert(title: "Внимание!", message: "Запись будет удалена со всех Ваших устройств!", okActionText: "ОК", cancelText: "Отмена") {
+                let event = EventsManager().eventsForDate(date: self.selectedDate, in: self.eventsArray).reversed()[indexPath.row]
+                StorageManager.deleteObject(event)
+                tableView.deleteRows(at: [indexPath].reversed(), with: .left)
+                self.calendar.reloadData()
+            }
         }
     }
     

@@ -29,7 +29,7 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" text="Текст заметки" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPK-dj-k3c">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" text="Текст заметки" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPK-dj-k3c">
                                         <rect key="frame" x="0.0" y="19.333333333333332" width="308" height="35.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,11 +45,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgb-CO-nQQ">
-                                <rect key="frame" x="15" y="27" width="20" height="20"/>
+                                <rect key="frame" x="15" y="27.666666666666671" width="20" height="20"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="smO-63-Lxb"/>
-                                    <constraint firstAttribute="height" constant="20" id="w1U-Ch-4Ih"/>
+                                    <constraint firstAttribute="width" constant="20" id="dcb-TP-gNO"/>
+                                    <constraint firstAttribute="height" constant="20" id="yk1-h4-Y8u"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -57,15 +57,14 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="oSi-zb-ggK" secondAttribute="bottom" id="0dL-Ff-aSJ"/>
                             <constraint firstItem="d93-Ar-vAJ" firstAttribute="top" secondItem="Jr9-1g-DbV" secondAttribute="top" constant="10" id="6zL-eB-ckZ"/>
-                            <constraint firstAttribute="height" constant="75" id="Dvd-wr-KzF"/>
-                            <constraint firstAttribute="bottom" secondItem="fgb-CO-nQQ" secondAttribute="bottom" constant="28" id="Fl8-c6-Gk0"/>
-                            <constraint firstAttribute="width" constant="393" id="InB-QR-ACa"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="70k-56-NOl"/>
+                            <constraint firstItem="fgb-CO-nQQ" firstAttribute="leading" secondItem="Jr9-1g-DbV" secondAttribute="leading" constant="15" id="DIb-sh-8Lu"/>
+                            <constraint firstItem="d93-Ar-vAJ" firstAttribute="leading" secondItem="Jr9-1g-DbV" secondAttribute="leading" constant="50" id="L7n-FF-REY"/>
                             <constraint firstItem="oSi-zb-ggK" firstAttribute="top" secondItem="Jr9-1g-DbV" secondAttribute="top" id="LUu-JT-eHL"/>
+                            <constraint firstItem="fgb-CO-nQQ" firstAttribute="centerY" secondItem="d93-Ar-vAJ" secondAttribute="centerY" id="aNC-4t-7fU"/>
                             <constraint firstAttribute="trailing" secondItem="oSi-zb-ggK" secondAttribute="trailing" id="egB-Yn-ciY"/>
                             <constraint firstAttribute="bottom" secondItem="d93-Ar-vAJ" secondAttribute="bottom" constant="10" id="mdB-mq-ih4"/>
-                            <constraint firstItem="d93-Ar-vAJ" firstAttribute="leading" secondItem="fgb-CO-nQQ" secondAttribute="trailing" constant="15" id="oWJ-Gg-alg"/>
                             <constraint firstItem="oSi-zb-ggK" firstAttribute="leading" secondItem="d93-Ar-vAJ" secondAttribute="trailing" constant="15" id="xYr-jT-AAp"/>
-                            <constraint firstItem="fgb-CO-nQQ" firstAttribute="leading" secondItem="Jr9-1g-DbV" secondAttribute="leading" constant="15" id="y3K-em-tFZ"/>
                         </constraints>
                     </view>
                 </subviews>
