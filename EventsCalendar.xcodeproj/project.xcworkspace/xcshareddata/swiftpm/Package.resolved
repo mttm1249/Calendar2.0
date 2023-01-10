@@ -1,0 +1,41 @@
+{
+  "pins" : [
+    {
+      "identity" : "fscalendar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/WenchaoD/FSCalendar.git",
+      "state" : {
+        "revision" : "0fbdec5172fccb90f707472eeaea4ffe095278f6",
+        "version" : "2.8.4"
+      }
+    },
+    {
+      "identity" : "pikko",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/melloskitten/pikko",
+      "state" : {
+        "revision" : "702dbf4e0d02c0a394ce06e94e3aef206d587cee",
+        "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core.git",
+      "state" : {
+        "revision" : "b77443ca7fa25407869ca537bf3ae912b1427bff",
+        "version" : "12.13.0"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "ed84f313b06f4be9757963007bb71c93f8a37816"
+      }
+    }
+  ],
+  "version" : 2
+}
