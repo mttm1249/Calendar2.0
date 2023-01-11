@@ -10,19 +10,19 @@ import UIKit
 extension ViewController {
     func setDefaultTheme() {
         userDefaults.set(true, forKey: "defaultThemeActive")
-        userDefaults.setColor(color: ColorPalette.shared.color1, forKey: "color1")
-        userDefaults.setColor(color: ColorPalette.shared.color2, forKey: "color2")
-        userDefaults.setColor(color: ColorPalette.shared.color3, forKey: "color3")
-        userDefaults.setColor(color: ColorPalette.shared.color4, forKey: "color4")
-        userDefaults.setColor(color: ColorPalette.shared.color5, forKey: "color5")
-        userDefaults.setColor(color: ColorPalette.shared.color6, forKey: "color6")
-        userDefaults.setColor(color: ColorPalette.shared.color7, forKey: "color7")
-        userDefaults.setColor(color: ColorPalette.shared.color8, forKey: "color8")
-        userDefaults.setColor(color: ColorPalette.shared.color9, forKey: "color9")
-        userDefaults.setColor(color: ColorPalette.shared.color10, forKey: "color10")
-        userDefaults.setColor(color: ColorPalette.shared.color11, forKey: "color11")
-        userDefaults.setColor(color: ColorPalette.shared.color12, forKey: "color12")
-        userDefaults.setColor(color: ColorPalette.shared.color13, forKey: "color13")
+        userDefaults.setColor(color: ThemeManager.shared.color1, forKey: "color1")
+        userDefaults.setColor(color: ThemeManager.shared.color2, forKey: "color2")
+        userDefaults.setColor(color: ThemeManager.shared.color3, forKey: "color3")
+        userDefaults.setColor(color: ThemeManager.shared.color4, forKey: "color4")
+        userDefaults.setColor(color: ThemeManager.shared.color5, forKey: "color5")
+        userDefaults.setColor(color: ThemeManager.shared.color6, forKey: "color6")
+        userDefaults.setColor(color: ThemeManager.shared.color7, forKey: "color7")
+        userDefaults.setColor(color: ThemeManager.shared.color8, forKey: "color8")
+        userDefaults.setColor(color: ThemeManager.shared.color9, forKey: "color9")
+        userDefaults.setColor(color: ThemeManager.shared.color10, forKey: "color10")
+        userDefaults.setColor(color: ThemeManager.shared.color11, forKey: "color11")
+        userDefaults.setColor(color: ThemeManager.shared.color12, forKey: "color12")
+        userDefaults.setColor(color: ThemeManager.shared.color13, forKey: "color13")
     }
     
     func setupCalendarAppearance() {

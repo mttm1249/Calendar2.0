@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA00C105296B4A660091D13A /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA00C104296B4A660091D13A /* ColorPalette.swift */; };
+		DA00C105296B4A660091D13A /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA00C104296B4A660091D13A /* ThemeManager.swift */; };
 		DA06743D29682B0600817FC8 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06743C29682B0600817FC8 /* Time.swift */; };
 		DA06743F29682F1B00817FC8 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06743E29682F1B00817FC8 /* EventTableViewCell.swift */; };
 		DA06744129682F2800817FC8 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA06744029682F2800817FC8 /* EventCell.xib */; };
@@ -24,7 +24,6 @@
 		DA50AE73296AC01000825C36 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA50AE72296AC01000825C36 /* Circle.swift */; };
 		DA50AE75296AC80A00825C36 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA50AE74296AC80A00825C36 /* ColorCollectionViewCell.swift */; };
 		DA6F8ABF296C02B20077DCDB /* ViewController - Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6F8ABE296C02B20077DCDB /* ViewController - Extensions.swift */; };
-		DAAE4CFC296976F600682675 /* Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAE4CFB296976F600682675 /* Shadows.swift */; };
 		DAAE4CFE29698EF000682675 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAE4CFD29698EF000682675 /* SearchTableViewController.swift */; };
 		DAC54D5E296AD53B00125ADF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC54D5D296AD53B00125ADF /* SettingsViewController.swift */; };
 		DAC54D60296AE05400125ADF /* ColorSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC54D5F296AE05400125ADF /* ColorSettingsCell.xib */; };
@@ -34,19 +33,18 @@
 		DAD3E3A02969D6AE00EFDF5E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD3E39F2969D6AE00EFDF5E /* Extensions.swift */; };
 		DADF8B7E29675E260019A118 /* EventsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF8B7D29675E260019A118 /* EventsManager.swift */; };
 		DADF8B8029675FA10019A118 /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF8B7F29675FA10019A118 /* EventEditViewController.swift */; };
-		DADF8B8229676D400019A118 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADF8B8129676D400019A118 /* EventViewController.swift */; };
 		DAFD84B5296D53C4008B7F73 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD84B4296D53C4008B7F73 /* Alerts.swift */; };
 		DAFD84B8296D5875008B7F73 /* WallpaperSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFD84B7296D5875008B7F73 /* WallpaperSetup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DA00C104296B4A660091D13A /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		DA00C104296B4A660091D13A /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		DA06743C29682B0600817FC8 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		DA06743E29682F1B00817FC8 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		DA06744029682F2800817FC8 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		DA067442296838E600817FC8 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		DA0674472968418400817FC8 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		DA20DC0E29670DDF00ECD829 /* EventsCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventsCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA20DC0E29670DDF00ECD829 /* MyEventPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEventPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA20DC1129670DDF00ECD829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA20DC1329670DDF00ECD829 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DA20DC1529670DDF00ECD829 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +55,6 @@
 		DA50AE72296AC01000825C36 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		DA50AE74296AC80A00825C36 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		DA6F8ABE296C02B20077DCDB /* ViewController - Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController - Extensions.swift"; sourceTree = "<group>"; };
-		DAAE4CFB296976F600682675 /* Shadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadows.swift; sourceTree = "<group>"; };
 		DAAE4CFD29698EF000682675 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		DAC54D5D296AD53B00125ADF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DAC54D5F296AE05400125ADF /* ColorSettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorSettingsCell.xib; sourceTree = "<group>"; };
@@ -66,7 +63,6 @@
 		DAD3E39F2969D6AE00EFDF5E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DADF8B7D29675E260019A118 /* EventsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsManager.swift; sourceTree = "<group>"; };
 		DADF8B7F29675FA10019A118 /* EventEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
-		DADF8B8129676D400019A118 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		DAFD84B4296D53C4008B7F73 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		DAFD84B7296D5875008B7F73 /* WallpaperSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperSetup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,8 +87,7 @@
 				DADF8B7D29675E260019A118 /* EventsManager.swift */,
 				DA0674472968418400817FC8 /* StorageManager.swift */,
 				DA06743C29682B0600817FC8 /* Time.swift */,
-				DAAE4CFB296976F600682675 /* Shadows.swift */,
-				DA00C104296B4A660091D13A /* ColorPalette.swift */,
+				DA00C104296B4A660091D13A /* ThemeManager.swift */,
 				DA6F8ABE296C02B20077DCDB /* ViewController - Extensions.swift */,
 				DAFD84B4296D53C4008B7F73 /* Alerts.swift */,
 			);
@@ -112,7 +107,6 @@
 			children = (
 				DA20DC1529670DDF00ECD829 /* ViewController.swift */,
 				DADF8B7F29675FA10019A118 /* EventEditViewController.swift */,
-				DADF8B8129676D400019A118 /* EventViewController.swift */,
 				DAAE4CFD29698EF000682675 /* SearchTableViewController.swift */,
 				DAC54D5D296AD53B00125ADF /* SettingsViewController.swift */,
 				DAC54D68296AF32A00125ADF /* ColorSetup.swift */,
@@ -144,7 +138,7 @@
 		DA20DC0F29670DDF00ECD829 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DA20DC0E29670DDF00ECD829 /* EventsCalendar.app */,
+				DA20DC0E29670DDF00ECD829 /* MyEventPlanner.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -219,9 +213,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DA20DC0D29670DDF00ECD829 /* EventsCalendar */ = {
+		DA20DC0D29670DDF00ECD829 /* MyEventPlanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA20DC2529670DE000ECD829 /* Build configuration list for PBXNativeTarget "EventsCalendar" */;
+			buildConfigurationList = DA20DC2529670DE000ECD829 /* Build configuration list for PBXNativeTarget "MyEventPlanner" */;
 			buildPhases = (
 				DA20DC0A29670DDF00ECD829 /* Sources */,
 				DA20DC0B29670DDF00ECD829 /* Frameworks */,
@@ -231,14 +225,14 @@
 			);
 			dependencies = (
 			);
-			name = EventsCalendar;
+			name = MyEventPlanner;
 			packageProductDependencies = (
 				DA3B033A2967259E0038307C /* FSCalendar */,
 				DA0674452968392000817FC8 /* RealmSwift */,
 				DAC54D6B296AF4BC00125ADF /* Pikko */,
 			);
 			productName = EventsCalendar;
-			productReference = DA20DC0E29670DDF00ECD829 /* EventsCalendar.app */;
+			productReference = DA20DC0E29670DDF00ECD829 /* MyEventPlanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -256,7 +250,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DA20DC0929670DDF00ECD829 /* Build configuration list for PBXProject "EventsCalendar" */;
+			buildConfigurationList = DA20DC0929670DDF00ECD829 /* Build configuration list for PBXProject "MyEventPlanner" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -274,7 +268,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DA20DC0D29670DDF00ECD829 /* EventsCalendar */,
+				DA20DC0D29670DDF00ECD829 /* MyEventPlanner */,
 			);
 		};
 /* End PBXProject section */
@@ -303,10 +297,8 @@
 				DA50AE75296AC80A00825C36 /* ColorCollectionViewCell.swift in Sources */,
 				DA06743F29682F1B00817FC8 /* EventTableViewCell.swift in Sources */,
 				DA50AE73296AC01000825C36 /* Circle.swift in Sources */,
-				DAAE4CFC296976F600682675 /* Shadows.swift in Sources */,
 				DA20DC1629670DDF00ECD829 /* ViewController.swift in Sources */,
 				DADF8B8029675FA10019A118 /* EventEditViewController.swift in Sources */,
-				DADF8B8229676D400019A118 /* EventViewController.swift in Sources */,
 				DAC54D5E296AD53B00125ADF /* SettingsViewController.swift in Sources */,
 				DA20DC1229670DDF00ECD829 /* AppDelegate.swift in Sources */,
 				DA06743D29682B0600817FC8 /* Time.swift in Sources */,
@@ -320,7 +312,7 @@
 				DADF8B7E29675E260019A118 /* EventsManager.swift in Sources */,
 				DAFD84B5296D53C4008B7F73 /* Alerts.swift in Sources */,
 				DAFD84B8296D5875008B7F73 /* WallpaperSetup.swift in Sources */,
-				DA00C105296B4A660091D13A /* ColorPalette.swift in Sources */,
+				DA00C105296B4A660091D13A /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,10 +458,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KG89CXC5J4;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 7GM9RUFL9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EventsCalendar/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MyEventPlanner;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Приложение хочет использовать Ваши изображения.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -482,7 +477,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mttm1249.EventsCalendar;
+				PRODUCT_BUNDLE_IDENTIFIER = mttm1249.EventPlannerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -499,10 +494,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KG89CXC5J4;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 7GM9RUFL9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EventsCalendar/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MyEventPlanner;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Приложение хочет использовать Ваши изображения.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -514,7 +512,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mttm1249.EventsCalendar;
+				PRODUCT_BUNDLE_IDENTIFIER = mttm1249.EventPlannerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -528,7 +526,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DA20DC0929670DDF00ECD829 /* Build configuration list for PBXProject "EventsCalendar" */ = {
+		DA20DC0929670DDF00ECD829 /* Build configuration list for PBXProject "MyEventPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA20DC2329670DE000ECD829 /* Debug */,
@@ -537,7 +535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA20DC2529670DE000ECD829 /* Build configuration list for PBXNativeTarget "EventsCalendar" */ = {
+		DA20DC2529670DE000ECD829 /* Build configuration list for PBXNativeTarget "MyEventPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA20DC2629670DE000ECD829 /* Debug */,

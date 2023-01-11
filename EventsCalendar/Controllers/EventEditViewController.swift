@@ -8,20 +8,14 @@
 import UIKit
 import RealmSwift
 
-protocol EventProtocol: AnyObject {
-    func addEvent(date: Date)
-}
-
 class EventEditViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     private let feedbackGeneratorForSaveAction = UIImpactFeedbackGenerator(style: .heavy)
     private let feedbackGeneratorForColorChanger = UIImpactFeedbackGenerator(style: .rigid)
     
     var colorCircles = [Circle]()
-
     var currentEvent: EventModel!
     var currentDate: Date!
-    weak var delegate: EventProtocol?
     private var priorityID = 0
     private var selectorIndexPath: IndexPath?
         
@@ -74,7 +68,6 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         priorityColorsCollectionView.reloadData()
     }
     
-    
     private func prepareColors() {
         let colors = [Circle(circleColor: .color1, colorID: 1),
                       Circle(circleColor: .color2, colorID: 2),
@@ -89,6 +82,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
             colorCircles.append(color)
         }
     }
+    
     // Saving object to REALM
     private func save() {
         let newEvent = EventModel(name: nameTF.text!, eventText: eventText.text!, isCompleted: false, eventDate: currentDate, priorityID: priorityID)
@@ -127,7 +121,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         cell.layer.borderWidth = 0.5
         cell.layer.borderColor = UIColor.systemGray2.cgColor
         if selectorIndexPath == indexPath {
-            cell.cellImage.image = UIImage(systemName: "checkmark")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+            cell.cellImage.image = UIImage(systemName: "checkmark")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         } else {
             cell.cellImage.image = UIImage()
         }

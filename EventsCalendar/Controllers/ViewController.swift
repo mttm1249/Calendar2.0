@@ -9,13 +9,13 @@ import UIKit
 import FSCalendar
 import RealmSwift
 
-class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate, EventProtocol {
+class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     let feedbackGenerator = UIImpactFeedbackGenerator()
     
+    let time = Time()
     var defaultColors = [SettingsOption]()
     var eventsArray: Results<EventModel>!
-    let time = Time()
     var selectedDate = Date()
     let roundAddButton = UIButton()
     
@@ -35,27 +35,25 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         setupAddButton()
         setupCalendar()
         setupTheme()
-        loadImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if ColorPalette.shared.themeIsChanged {
-            ColorPalette.shared.themeIsChanged = false
+        if ThemeManager.shared.themeIsChanged {
+            ThemeManager.shared.themeIsChanged = false
             setupTheme()
-            loadImage()
         }
         calendar.reloadData()
         tableView.reloadData()
     }
     
-    func loadImage() {
+    func loadWallpaperImage() {
         guard let data = UserDefaults.standard.data(forKey: "wallpaperImage") else { return }
         let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
         let image = UIImage(data: decoded)
-        if image != nil && userDefaults.bool(forKey: "wallpaperSwitch") == true {
+        if image != nil && userDefaults.bool(forKey: "wallpaperSwitch") {
             wallpaperImage.image = image
-        } else if image == nil || userDefaults.bool(forKey: "wallpaperSwitch") == false {
+        } else if image == nil || !userDefaults.bool(forKey: "wallpaperSwitch") {
             wallpaperImage.image = UIImage()
         }
     }
@@ -66,18 +64,14 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         tableView.register(cell, forCellReuseIdentifier: "eventCell")
     }
     
-    // delegate method
-    func addEvent(date: Date) {
-        
-    }
-    
     func setupTheme() {
         if !userDefaults.bool(forKey: "defaultThemeActive") {
             setDefaultTheme()
             setupCalendarAppearance()
+            loadWallpaperImage()
         } else {
             setupCalendarAppearance()
-            loadImage()
+            loadWallpaperImage()
         }
     }
     
@@ -123,8 +117,6 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         if segue.identifier == "addRecord" {
             let editVC = segue.destination as! EventEditViewController
             editVC.currentDate = selectedDate
-            editVC.delegate = self
-            
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray).reversed()[indexPath.row]
             editVC.currentEvent = event

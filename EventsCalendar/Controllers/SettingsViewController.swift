@@ -15,7 +15,7 @@ struct SettingsOption {
 }
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ColorUpdate {
- 
+    
     private let feedbackGeneratorForOptions = UIImpactFeedbackGenerator(style: .rigid)
     var options = [SettingsOption]()
     
@@ -31,7 +31,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         prepareColorTheme()
         view.backgroundColor = userDefaults.colorFor(key: "color11")
     }
-        
+    
     //delegate method
     func reloadColors() {
         options.removeAll()
@@ -105,11 +105,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.optionColor.backgroundColor = color
         return cell
     }
-    
-    @objc func switchChanged(_ sender : UISwitch!){
-          print("The switch is \(sender.isOn ? "ON" : "OFF")")
-    }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if options[indexPath.row].id != nil {
             performSegue(withIdentifier: "wallpaperSetup", sender: self)
@@ -122,12 +118,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
-        
+    
     @IBAction func resetButtonAction(_ sender: Any) {
         showAlert(title: "Внимание!", message: "Все настройки будут сброшены", okActionText: "ОК", cancelText: "Отмена") {
-            userDefaults.removeObject(forKey: "wallpaperImage")
             userDefaults.set(false, forKey: "wallpaperSwitch")
-            ColorPalette.shared.themeIsChanged = true
+            ThemeManager.shared.themeIsChanged = true
+            self.performSegue(withIdentifier: "unwindSegue", sender: self)
         }
     }
 }
@@ -139,23 +135,3 @@ extension SettingsViewController: UIScrollViewDelegate {
         scrollView.contentOffset.x = 0
     }
 }
-
-//// MARK: Work with image
-//extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-//    func chooseImagePicker(source: UIImagePickerController.SourceType) {
-//        if UIImagePickerController.isSourceTypeAvailable(source) {
-//            let imagePicker = UIImagePickerController()
-//            imagePicker.delegate = self
-//            imagePicker.allowsEditing = true
-//            imagePicker.sourceType = source
-//            present(imagePicker, animated: true)
-//        }
-//    }
-//
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        bottleImage.image = info[.editedImage] as? UIImage
-//        bottleImage.contentMode = .scaleAspectFill
-//        bottleImage.clipsToBounds = true
-//        dismiss(animated: true)
-//    }
-//}

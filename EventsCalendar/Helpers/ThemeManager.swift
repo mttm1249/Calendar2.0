@@ -9,7 +9,7 @@ import UIKit
 
 let userDefaults = UserDefaults.standard
 
-class ColorPalette {
+class ThemeManager {
     var themeIsChanged = false
     
     let color1  = #colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3019607843, alpha: 1)
@@ -26,7 +26,7 @@ class ColorPalette {
     let color12 = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
     let color13 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
-    static let shared = ColorPalette()
+    static let shared = ThemeManager()
     private init() {}
 }
 

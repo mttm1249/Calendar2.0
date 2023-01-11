@@ -40,6 +40,7 @@ class WallpaperSetup: UIViewController {
     private func setupUI() {
         let loadedResult = userDefaults.bool(forKey: "wallpaperSwitch")
         wallpaperSwitch.isOn = loadedResult
+        
         guard let data = UserDefaults.standard.data(forKey: "wallpaperImage") else { return }
         let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
         let image = UIImage(data: decoded)
@@ -62,7 +63,6 @@ class WallpaperSetup: UIViewController {
         present(picker, animated: true)
     }
     
-    
     func saveImage() {
         guard wallpaperImage.image != nil else { return }
         guard let data = wallpaperImage.image!.jpegData(compressionQuality: 1.0) else { return }
@@ -72,13 +72,13 @@ class WallpaperSetup: UIViewController {
     
     @IBAction func applyButtonAction(_ sender: Any) {
         saveImage()
-        ColorPalette.shared.themeIsChanged = true
-        userDefaults.set(true, forKey: "wallpaperSwitch")
+        ThemeManager.shared.themeIsChanged = true
         navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func wallpaperShowSwitchAction(_ sender: Any) {
         userDefaults.set(wallpaperSwitch.isOn, forKey: "wallpaperSwitch")
-        ColorPalette.shared.themeIsChanged = true
+        ThemeManager.shared.themeIsChanged = true
     }
 }
 
