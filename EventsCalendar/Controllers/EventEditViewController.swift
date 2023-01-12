@@ -22,6 +22,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
     private var priorityID = 0
     private var selectorIndexPath: IndexPath?
     private var notificationIsEnabled = false
+    private var permissionGrantedForNotifications = false
         
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -49,10 +50,15 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         datePicker.minimumDate = Date()
         datePicker.date = currentDate
         setupScreen()
-
+        checkNotificationPermission()
+    }
+    
+    private func checkNotificationPermission() {
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (permissionGranted, error) in
-            if !permissionGranted {
-                print("Permission Denied")
+            if permissionGranted {
+                self.permissionGrantedForNotifications = true
+            } else {
+                self.permissionGrantedForNotifications = false
             }
         }
     }
@@ -60,6 +66,9 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBAction func notificationSwitchAction(_ sender: Any) {
         datePicker.isHidden.toggle()
         notificationIsEnabled.toggle()
+        if !permissionGrantedForNotifications {
+            showAlertForNotifications(title: "Напоминания", message: "Для того что бы получать напоминания активируйте функцию уведомлений в настройках", okActionText: "Настройки", cancelText: "Отмена")
+        }
     }
 
     private func setupScreen() {
@@ -117,6 +126,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
     // Saving object to REALM
     private func save() {
         let uniqueRequestID = UUID().uuidString
+      
         if notificationIsEnabled {
             createNotification(with: uniqueRequestID)
         } else {
@@ -130,6 +140,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         if notificationIsEnabled {
             newEvent.eventNotificationDate = datePicker.date
         }
+        
         if currentEvent != nil {
             try! realm.write {
                 currentEvent.name = newEvent.name
@@ -176,17 +187,6 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
                     ac.addAction(UIAlertAction(title: "ОК", style: .default, handler: { _ in
                         self.navigationController?.popViewController(animated: true)
                     }))
-                    self.present(ac, animated: true)
-                } else {
-                    let ac = UIAlertController(title: "Разрешить уведомления?", message: "Активируйте эту функцию в настройках", preferredStyle: .alert)
-                    let goToSettings = UIAlertAction(title: "Настройки", style: .default) { _ in
-                        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-                        if UIApplication.shared.canOpenURL(settingsURL) {
-                            UIApplication.shared.open(settingsURL)
-                        }
-                    }
-                    ac.addAction(goToSettings)
-                    ac.addAction(UIAlertAction(title: "Отмена", style: .default))
                     self.present(ac, animated: true)
                 }
             }
