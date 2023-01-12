@@ -13,7 +13,7 @@
         <!--Settings-->
         <scene sceneID="4Ag-Ir-a7n">
             <objects>
-                <viewController title="Settings" id="Vcx-ZN-Ktf" customClass="SettingsViewController" customModule="EventsCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Settings" id="Vcx-ZN-Ktf" customClass="SettingsViewController" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tgk-0N-iP7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,8 +67,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Настройки" id="Kuq-GN-G7V">
-                        <barButtonItem key="rightBarButtonItem" title="Сбросить" id="C5I-rW-eFx">
-                            <color key="tintColor" systemColor="systemRedColor"/>
+                        <barButtonItem key="rightBarButtonItem" title="Сбросить" style="plain" id="C5I-rW-eFx">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="resetButtonAction:" destination="Vcx-ZN-Ktf" id="6ET-QJ-kGT"/>
                             </connections>
@@ -90,7 +90,7 @@
         <!--Обои-->
         <scene sceneID="s5C-ej-ycg">
             <objects>
-                <viewController id="IXg-UU-pRH" customClass="WallpaperSetup" customModule="EventsCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IXg-UU-pRH" customClass="WallpaperSetup" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JvP-Jl-90e">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,7 +157,7 @@
         <!--Main-->
         <scene sceneID="WOi-Rq-fGQ">
             <objects>
-                <viewController title="Main" id="D1L-OU-WtH" customClass="ViewController" customModule="EventsCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main" id="D1L-OU-WtH" customClass="ViewController" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8aH-TO-cSY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -244,13 +244,13 @@
         <!--Поиск-->
         <scene sceneID="5lu-mX-BGq">
             <objects>
-                <viewController id="Jsu-fV-Wd5" customClass="SearchViewController" customModule="EventsCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Jsu-fV-Wd5" customClass="SearchViewController" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lzo-xB-VOO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="a61-8n-L0E">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="0.90156767384105962" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -269,10 +269,10 @@
                         <viewLayoutGuide key="safeArea" id="R5P-7r-XJX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="R5P-7r-XJX" firstAttribute="trailing" secondItem="a61-8n-L0E" secondAttribute="trailing" id="1GR-S1-WGV"/>
-                            <constraint firstItem="a61-8n-L0E" firstAttribute="leading" secondItem="R5P-7r-XJX" secondAttribute="leading" id="N97-0R-weu"/>
-                            <constraint firstItem="a61-8n-L0E" firstAttribute="top" secondItem="R5P-7r-XJX" secondAttribute="top" id="OBK-Xu-CmV"/>
-                            <constraint firstItem="R5P-7r-XJX" firstAttribute="bottom" secondItem="a61-8n-L0E" secondAttribute="bottom" id="Zm9-vb-Uoo"/>
+                            <constraint firstItem="a61-8n-L0E" firstAttribute="trailing" secondItem="R5P-7r-XJX" secondAttribute="trailing" id="8jc-K4-uOg"/>
+                            <constraint firstItem="a61-8n-L0E" firstAttribute="top" secondItem="R5P-7r-XJX" secondAttribute="top" id="ksT-EN-ZgJ"/>
+                            <constraint firstItem="a61-8n-L0E" firstAttribute="leading" secondItem="R5P-7r-XJX" secondAttribute="leading" id="reG-Zo-evt"/>
+                            <constraint firstItem="a61-8n-L0E" firstAttribute="bottom" secondItem="R5P-7r-XJX" secondAttribute="bottom" constant="34" id="zSW-pr-CDl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Поиск" id="fmZ-uR-r8b">
@@ -288,12 +288,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NhK-rq-T9G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1781" y="296"/>
+            <point key="canvasLocation" x="1780.916030534351" y="295.77464788732397"/>
         </scene>
         <!--Выбор цвета-->
         <scene sceneID="rd2-Ny-9os">
             <objects>
-                <viewController id="wdC-wy-IYY" customClass="ColorSetup" customModule="EventsCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wdC-wy-IYY" customClass="ColorSetup" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j3v-8s-xlC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,7 +309,7 @@
         <!--New record-->
         <scene sceneID="0Y8-3c-0KB">
             <objects>
-                <viewController storyboardIdentifier="editRecord" title="New record" id="UAi-6G-707" customClass="EventEditViewController" customModule="EventsCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editRecord" title="New record" id="UAi-6G-707" customClass="EventEditViewController" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="shz-mZ-ADn">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,10 +323,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJn-Zw-hhz">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UJn-Zw-hhz">
                                         <rect key="frame" x="0.0" y="30.333333333333339" width="343" height="45.666666666666657"/>
-                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
-                                        <color key="tintColor" systemColor="systemGray6Color"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45.666666666666657" id="Cim-zw-tAb"/>
                                         </constraints>
@@ -359,7 +359,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iPE-pk-4nb">
-                                <rect key="frame" x="25" y="466.66666666666669" width="343" height="78.333333333333314"/>
+                                <rect key="frame" x="25" y="466.33333333333331" width="343" height="78.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цвет для записи:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LsH-Zf-NFQ">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.333333333333332"/>
@@ -368,7 +368,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZBr-QA-xLj">
-                                        <rect key="frame" x="0.0" y="28.333333333333314" width="343" height="50"/>
+                                        <rect key="frame" x="0.0" y="28.333333333333371" width="343" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="0AV-nk-UyM"/>
@@ -380,7 +380,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colorCell" id="vgJ-80-er6" customClass="ColorCollectionViewCell" customModule="EventsCalendar" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colorCell" id="vgJ-80-er6" customClass="ColorCollectionViewCell" customModule="MyEventPlanner" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="5" width="40" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OlB-I7-UZF">
@@ -409,13 +409,43 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kKU-q8-lUr">
+                                <rect key="frame" x="25" y="564.66666666666663" width="343" height="101"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rkQ-I9-z5P">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Напоминание для записи:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mcI-GR-Cjk">
+                                                <rect key="frame" x="0.0" y="0.0" width="289" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qUR-QM-37C">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="notificationSwitchAction:" destination="UAi-6G-707" eventType="valueChanged" id="ho2-rD-EA4"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="QFb-dl-ESQ">
+                                        <rect key="frame" x="0.0" y="51" width="343" height="50"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <locale key="locale" localeIdentifier="ru_RU"/>
+                                    </datePicker>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tYH-nK-WPE"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="YHZ-Ka-c9f" firstAttribute="leading" secondItem="tYH-nK-WPE" secondAttribute="leading" constant="25" id="0Z4-va-Akj"/>
                             <constraint firstItem="tYH-nK-WPE" firstAttribute="trailing" secondItem="YHZ-Ka-c9f" secondAttribute="trailing" constant="25" id="9yA-Rg-7ua"/>
-                            <constraint firstItem="iPE-pk-4nb" firstAttribute="top" secondItem="YHZ-Ka-c9f" secondAttribute="bottom" constant="20.333333333333485" id="Fbh-ez-mHJ"/>
+                            <constraint firstItem="iPE-pk-4nb" firstAttribute="top" secondItem="YHZ-Ka-c9f" secondAttribute="bottom" constant="20" id="Fbh-ez-mHJ"/>
+                            <constraint firstItem="kKU-q8-lUr" firstAttribute="top" secondItem="iPE-pk-4nb" secondAttribute="bottom" constant="20" id="Ygq-sB-hu9"/>
+                            <constraint firstItem="tYH-nK-WPE" firstAttribute="trailing" secondItem="kKU-q8-lUr" secondAttribute="trailing" constant="25" id="g5Q-8y-LI0"/>
+                            <constraint firstItem="kKU-q8-lUr" firstAttribute="leading" secondItem="tYH-nK-WPE" secondAttribute="leading" constant="25" id="hbp-qP-OQN"/>
                             <constraint firstItem="tYH-nK-WPE" firstAttribute="trailing" secondItem="iPE-pk-4nb" secondAttribute="trailing" constant="25" id="jQw-We-TMR"/>
                             <constraint firstItem="iPE-pk-4nb" firstAttribute="leading" secondItem="tYH-nK-WPE" secondAttribute="leading" constant="25" id="ljg-3j-9lG"/>
                             <constraint firstItem="YHZ-Ka-c9f" firstAttribute="top" secondItem="tYH-nK-WPE" secondAttribute="top" constant="23" id="tUv-SS-D8L"/>
@@ -430,9 +460,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addRecordButton" destination="YGw-4L-s04" id="8wy-di-Qym"/>
+                        <outlet property="datePicker" destination="QFb-dl-ESQ" id="K44-tf-Zh4"/>
                         <outlet property="eventText" destination="59a-r0-lgy" id="XFN-Zr-C6U"/>
                         <outlet property="eventTextOutlet" destination="59a-r0-lgy" id="jbK-bG-WqP"/>
                         <outlet property="nameTF" destination="UJn-Zw-hhz" id="og2-UF-7CE"/>
+                        <outlet property="notificationSwitch" destination="qUR-QM-37C" id="XCn-DE-9QL"/>
                         <outlet property="priorityColorsCollectionView" destination="ZBr-QA-xLj" id="7lt-6D-2ni"/>
                     </connections>
                 </viewController>
@@ -468,9 +500,6 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

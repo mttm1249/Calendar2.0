@@ -8,10 +8,12 @@
 import UIKit
 import FSCalendar
 import RealmSwift
+import UserNotifications
 
 class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate {
     
     let feedbackGenerator = UIImpactFeedbackGenerator()
+    let notificationCenter = UNUserNotificationCenter.current()
     
     let time = Time()
     var defaultColors = [SettingsOption]()
@@ -143,7 +145,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     }
     
     // MARK: TableView DataSource
-    
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return EventsManager().eventsForDate(date: selectedDate, in: eventsArray).count
     }
@@ -166,6 +168,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         if editingStyle == .delete {
             showAlert(title: "Внимание!", message: "Запись будет удалена со всех Ваших устройств!", okActionText: "ОК", cancelText: "Отмена") {
                 let event = EventsManager().eventsForDate(date: self.selectedDate, in: self.eventsArray).reversed()[indexPath.row]
+                self.notificationCenter.removePendingNotificationRequests(withIdentifiers: [event.eventNotificationID])
                 StorageManager.deleteObject(event)
                 tableView.deleteRows(at: [indexPath].reversed(), with: .left)
                 self.calendar.reloadData()

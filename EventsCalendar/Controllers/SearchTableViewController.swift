@@ -78,6 +78,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell.setup(model: event)
                 return cell
             } else if !isFiltering && showAllActive {
+                allEvents = allEvents.sorted(byKeyPath: "priorityID", ascending: true)
                 let event = allEvents.reversed()[indexPath.row]
                 cell.setup(model: event)
                 return cell

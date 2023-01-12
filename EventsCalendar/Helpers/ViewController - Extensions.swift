@@ -15,14 +15,14 @@ extension ViewController {
         userDefaults.setColor(color: ThemeManager.shared.color3, forKey: "color3")
         userDefaults.setColor(color: ThemeManager.shared.color4, forKey: "color4")
         userDefaults.setColor(color: ThemeManager.shared.color5, forKey: "color5")
-        userDefaults.setColor(color: ThemeManager.shared.color6, forKey: "color6")
-        userDefaults.setColor(color: ThemeManager.shared.color7, forKey: "color7")
-        userDefaults.setColor(color: ThemeManager.shared.color8, forKey: "color8")
-        userDefaults.setColor(color: ThemeManager.shared.color9, forKey: "color9")
-        userDefaults.setColor(color: ThemeManager.shared.color10, forKey: "color10")
-        userDefaults.setColor(color: ThemeManager.shared.color11, forKey: "color11")
+        userDefaults.setColor(color: ThemeManager.shared.color7, forKey: "color6")
+        userDefaults.setColor(color: ThemeManager.shared.color8, forKey: "color7")
+        userDefaults.setColor(color: ThemeManager.shared.color9, forKey: "color8")
+        userDefaults.setColor(color: ThemeManager.shared.color10, forKey: "color9")
+        userDefaults.setColor(color: ThemeManager.shared.color11, forKey: "color10")
+        userDefaults.setColor(color: ThemeManager.shared.color13, forKey: "color11")
         userDefaults.setColor(color: ThemeManager.shared.color12, forKey: "color12")
-        userDefaults.setColor(color: ThemeManager.shared.color13, forKey: "color13")
+        userDefaults.setColor(color: ThemeManager.shared.color6, forKey: "color13")
     }
     
     func setupCalendarAppearance() {

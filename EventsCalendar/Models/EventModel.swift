@@ -17,12 +17,19 @@ class EventModel: Object {
     @Persisted var isCompleted: Bool?
     @Persisted var eventDate: Date?
     @Persisted var priorityID: Int?
+    
+    @Persisted var eventNotificationDate: Date?
+    @Persisted var eventNotificationID = UUID().uuidString
+    @Persisted var eventWithNotification: Bool!
 
     convenience init(name: String,
                      eventText: String?,
                      isCompleted: Bool?,
                      eventDate: Date?,
-                     priorityID: Int?)
+                     priorityID: Int?,
+                     eventNotificationDate: Date?,
+                     eventNotificationID: String!,
+                     eventWithNotification: Bool!)
     {
         self.init()
         self.name = name
@@ -30,6 +37,10 @@ class EventModel: Object {
         self.isCompleted = isCompleted
         self.eventDate = eventDate
         self.priorityID = priorityID
+        
+        self.eventNotificationDate = eventNotificationDate
+        self.eventNotificationID = eventNotificationID
+        self.eventWithNotification = eventWithNotification
     }
     
     convenience init(record: CKRecord) {

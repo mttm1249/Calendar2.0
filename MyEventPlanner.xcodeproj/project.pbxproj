@@ -24,6 +24,7 @@
 		DA50AE73296AC01000825C36 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA50AE72296AC01000825C36 /* Circle.swift */; };
 		DA50AE75296AC80A00825C36 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA50AE74296AC80A00825C36 /* ColorCollectionViewCell.swift */; };
 		DA6F8ABF296C02B20077DCDB /* ViewController - Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6F8ABE296C02B20077DCDB /* ViewController - Extensions.swift */; };
+		DA8D8E02297032C000CD764B /* TintTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D8E01297032C000CD764B /* TintTextField.swift */; };
 		DAAE4CFE29698EF000682675 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAE4CFD29698EF000682675 /* SearchTableViewController.swift */; };
 		DAC54D5E296AD53B00125ADF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC54D5D296AD53B00125ADF /* SettingsViewController.swift */; };
 		DAC54D60296AE05400125ADF /* ColorSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC54D5F296AE05400125ADF /* ColorSettingsCell.xib */; };
@@ -54,7 +55,9 @@
 		DA20DC2229670DE000ECD829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA50AE72296AC01000825C36 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		DA50AE74296AC80A00825C36 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		DA6D7666296EC3ED005BD178 /* MyEventPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyEventPlanner.entitlements; sourceTree = "<group>"; };
 		DA6F8ABE296C02B20077DCDB /* ViewController - Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController - Extensions.swift"; sourceTree = "<group>"; };
+		DA8D8E01297032C000CD764B /* TintTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintTextField.swift; sourceTree = "<group>"; };
 		DAAE4CFD29698EF000682675 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		DAC54D5D296AD53B00125ADF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DAC54D5F296AE05400125ADF /* ColorSettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorSettingsCell.xib; sourceTree = "<group>"; };
@@ -120,9 +123,9 @@
 			children = (
 				DA20DC1129670DDF00ECD829 /* AppDelegate.swift */,
 				DA20DC1329670DDF00ECD829 /* SceneDelegate.swift */,
+				DAD3E39F2969D6AE00EFDF5E /* Extensions.swift */,
 				DA20DC1D29670DE000ECD829 /* Assets.xcassets */,
 				DA20DC2229670DE000ECD829 /* Info.plist */,
-				DAD3E39F2969D6AE00EFDF5E /* Extensions.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 		DA20DC0529670DDF00ECD829 = {
 			isa = PBXGroup;
 			children = (
+				DA6D7666296EC3ED005BD178 /* MyEventPlanner.entitlements */,
 				DA20DC1029670DDF00ECD829 /* EventsCalendar */,
 				DA20DC0F29670DDF00ECD829 /* Products */,
 			);
@@ -178,6 +182,7 @@
 			children = (
 				DAAEEA2B2968543900D8CD3B /* Cells */,
 				DA50AE72296AC01000825C36 /* Circle.swift */,
+				DA8D8E01297032C000CD764B /* TintTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				DA6F8ABF296C02B20077DCDB /* ViewController - Extensions.swift in Sources */,
 				DA50AE75296AC80A00825C36 /* ColorCollectionViewCell.swift in Sources */,
 				DA06743F29682F1B00817FC8 /* EventTableViewCell.swift in Sources */,
+				DA8D8E02297032C000CD764B /* TintTextField.swift in Sources */,
 				DA50AE73296AC01000825C36 /* Circle.swift in Sources */,
 				DA20DC1629670DDF00ECD829 /* ViewController.swift in Sources */,
 				DADF8B8029675FA10019A118 /* EventEditViewController.swift in Sources */,
@@ -457,8 +463,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyEventPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 7GM9RUFL9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EventsCalendar/Supporting Files/Info.plist";
@@ -493,8 +500,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyEventPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 7GM9RUFL9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EventsCalendar/Supporting Files/Info.plist";

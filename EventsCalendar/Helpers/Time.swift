@@ -15,4 +15,11 @@ class Time {
         let dateString = dateFormatter.string(from: from)
         return dateString
     }
+    
+    func getDateStringForNotification(from: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "(dd.MM.yyyy) HH:mm"
+        let dateString = dateFormatter.string(from: from)
+        return dateString
+    }
 }
