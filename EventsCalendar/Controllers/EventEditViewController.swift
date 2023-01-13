@@ -8,14 +8,17 @@
 import UIKit
 import RealmSwift
 import UserNotifications
+import Network
 
 
 class EventEditViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
+    
     let notificationCenter = UNUserNotificationCenter.current()
     private let feedbackGeneratorForSaveAction = UIImpactFeedbackGenerator(style: .heavy)
     private let feedbackGeneratorForColorChanger = UIImpactFeedbackGenerator(style: .rigid)
-        
+    private let time = Time()
+    private let monitor = NWPathMonitor()
+
     var colorCircles = [Circle]()
     var currentEvent: EventModel!
     var currentDate: Date!
@@ -23,7 +26,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
     private var selectorIndexPath: IndexPath?
     private var notificationIsEnabled = false
     private var permissionGrantedForNotifications = false
-        
+    
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var addRecordButton: UIBarButtonItem!
@@ -47,10 +50,25 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         priorityColorsCollectionView.dataSource = self
         priorityColorsCollectionView.delegate = self
         datePicker.isHidden = true
-        datePicker.minimumDate = Date()
-        datePicker.date = currentDate
-        setupScreen()
         checkNotificationPermission()
+        setupScreen()
+        checkConnection()
+    }
+        
+    private func checkConnection() {
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                DispatchQueue.main.async {
+                    self.addRecordButton.isEnabled = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.addRecordButton.isEnabled = false
+                }
+            }
+        }
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
     }
     
     private func checkNotificationPermission() {
@@ -59,6 +77,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
                 self.permissionGrantedForNotifications = true
             } else {
                 self.permissionGrantedForNotifications = false
+                print(error.debugDescription)
             }
         }
     }
@@ -67,18 +86,18 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         datePicker.isHidden.toggle()
         notificationIsEnabled.toggle()
         if !permissionGrantedForNotifications {
-            showAlertForNotifications(title: "Напоминания", message: "Для того что бы получать напоминания активируйте функцию уведомлений в настройках", okActionText: "Настройки", cancelText: "Отмена")
+            showAlertForSettings(title: "Напоминания", message: "Для того что бы получать напоминания, активируйте функцию уведомлений в настройках.", settingsText: "Настройки", cancelText: "Отмена")
         }
     }
-
+    
     private func setupScreen() {
         if currentEvent != nil {
             nameTF.text = currentEvent.name
             eventText.text = currentEvent.eventText
             priorityID = currentEvent.priorityID!
             
-            if currentEvent.eventWithNotification && currentEvent.eventNotificationDate != nil {
-                datePicker.date = currentEvent.eventNotificationDate!
+            if currentEvent.eventWithNotification {
+                datePicker.date = currentEvent.eventNotificationDate
                 notificationSwitch.isOn = currentEvent.eventWithNotification
                 notificationIsEnabled = currentEvent.eventWithNotification
                 datePicker.isHidden = false
@@ -104,6 +123,8 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
             default:
                 break
             }
+        } else {
+            datePicker.date = currentDate
         }
         priorityColorsCollectionView.reloadData()
     }
@@ -126,39 +147,61 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
     // Saving object to REALM
     private func save() {
         let uniqueRequestID = UUID().uuidString
-      
-        if notificationIsEnabled {
-            createNotification(with: uniqueRequestID)
-        } else {
-            removeLastNotification()
-        }
-        
         let newEvent = EventModel(name: nameTF.text!, eventText: eventText.text!, isCompleted: false, eventDate: currentDate, priorityID: priorityID, eventNotificationDate: datePicker.date, eventNotificationID: uniqueRequestID, eventWithNotification: notificationIsEnabled)
         newEvent.name = nameTF.text
         newEvent.eventText = eventText.text
         newEvent.eventDate = currentDate
-        if notificationIsEnabled {
+        
+        // Create new notification
+        if notificationIsEnabled && currentEvent == nil {
             newEvent.eventNotificationDate = datePicker.date
+            createNotification(with: uniqueRequestID, alertText: "Было установлено на")
+            newEvent.eventWithNotification = true
+        } else {
+            newEvent.eventWithNotification = false
         }
         
+        // Update current event
         if currentEvent != nil {
             try! realm.write {
                 currentEvent.name = newEvent.name
                 currentEvent.eventText = newEvent.eventText
                 currentEvent.priorityID = priorityID
+                
+                // Update current notification if it exists
                 if notificationIsEnabled {
-                    currentEvent.eventNotificationDate = datePicker.date
+                    if currentEvent.eventWithNotification && datePicker.date != currentEvent.eventNotificationDate {
+                        currentEvent.eventNotificationDate = datePicker.date
+                        createNotification(with: currentEvent.eventNotificationID, alertText: "Было изменено на")
+                        // Update existed (event without notification)
+                    } else if !currentEvent.eventWithNotification {
+                        currentEvent.eventWithNotification = true
+                        currentEvent.eventNotificationDate = datePicker.date
+                        createNotification(with: currentEvent.eventNotificationID, alertText: "Было установлено на")
+                        // Just update record (without update current notification)
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 } else {
                     currentEvent.eventWithNotification = false
+                    removeLastNotification(from: currentEvent.eventNotificationID)
                 }
+                    CloudManager.updateCloudData(event: currentEvent)
             }
         } else {
+                CloudManager.saveDataToCloud(event: newEvent) { recordId in
+                    DispatchQueue.main.async {
+                        try! realm.write {
+                            newEvent.recordID = recordId
+                        }
+                    }
+                }
             StorageManager.saveObject(newEvent)
         }
         feedbackGeneratorForSaveAction.impactOccurred()
     }
     
-    func createNotification(with uniqueID: String) {
+    func createNotification(with uniqueID: String, alertText: String) {
         notificationCenter.getNotificationSettings { (settings) in
             DispatchQueue.main.async {
                 let dv = ""
@@ -172,22 +215,20 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
                     content.body = message ?? dv
                     content.sound = UNNotificationSound.default
                     content.badge = NSNumber(value: UIApplication.shared.applicationIconBadgeNumber + 1)
-
+                    
                     let dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
                     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: false)
                     let request = UNNotificationRequest(identifier: uniqueID, content: content, trigger: trigger)
-
+                    
                     self.notificationCenter.add(request) { error in
                         if error != nil {
                             print("Error " + error.debugDescription)
                             return
                         }
                     }
-                    let ac = UIAlertController(title: "Напоминание установлено", message: "На " + Time().getDateStringForNotification(from: date), preferredStyle: .alert)
-                    ac.addAction(UIAlertAction(title: "ОК", style: .default, handler: { _ in
+                    self.showAlertForNotification(title: "Напоминание", message: "\(alertText) \(self.time.getDateStringForNotification(from: date))", okText: "OK") {
                         self.navigationController?.popViewController(animated: true)
-                    }))
-                    self.present(ac, animated: true)
+                    }
                 }
             }
         }
@@ -199,11 +240,11 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
             navigationController?.popViewController(animated: true)
         }
     }
-        
-    private func removeLastNotification() {
-        guard (currentEvent != nil) && (currentEvent.eventNotificationDate != nil) else { return }
-        notificationCenter.removePendingNotificationRequests(withIdentifiers: [currentEvent.eventNotificationID])
-        print("Уведомление \(currentEvent.eventNotificationDate!) было удалено")
+    
+    private func removeLastNotification(from id: String) {
+        guard currentEvent != nil && currentEvent.eventWithNotification else { return }
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
+        print("Уведомление было удалено")
     }
     
     //MARK: CollectionView DataSource
@@ -228,7 +269,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-       return CGSize(width: 40, height: 40)
+        return CGSize(width: 40, height: 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -243,5 +284,4 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         feedbackGeneratorForColorChanger.impactOccurred()
         priorityColorsCollectionView.reloadData()
     }
-    
 }

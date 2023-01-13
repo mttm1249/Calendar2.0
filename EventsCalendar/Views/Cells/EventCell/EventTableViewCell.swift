@@ -9,10 +9,14 @@ import UIKit
 
 class EventTableViewCell: UITableViewCell {
     
+    let time = Time()
+    
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventText: UILabel!
     @IBOutlet weak var completeIndicator: UIView!
     @IBOutlet weak var priorityIndicator: UIView!
+    @IBOutlet weak var notificationInfoView: UIStackView!
+    @IBOutlet weak var notificationDateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,11 +28,19 @@ class EventTableViewCell: UITableViewCell {
     }
     
     func setup(model: EventModel) {
+        if model.eventWithNotification {
+            notificationInfoView.isHidden = false
+            notificationDateLabel.text = time.getDateStringForNotification(from: model.eventNotificationDate)
+        } else {
+            notificationInfoView.isHidden = true
+        }
         eventName.text = model.name
         eventText.text = model.eventText
         if model.isCompleted! {
+            completeIndicator.isHidden = false
             completeIndicator.backgroundColor = .systemGreen
         } else {
+            completeIndicator.isHidden = true
             completeIndicator.backgroundColor = .clear
         }
         switch model.priorityID {

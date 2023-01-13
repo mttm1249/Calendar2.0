@@ -10,24 +10,26 @@ import CloudKit
 import UIKit
 
 class EventModel: Object {
-    @Persisted var eventID = UUID().uuidString
     @Persisted var recordID = ""
+    @Persisted var eventID = UUID().uuidString
     @Persisted var name: String?
     @Persisted var eventText: String?
     @Persisted var isCompleted: Bool?
     @Persisted var eventDate: Date?
     @Persisted var priorityID: Int?
     
-    @Persisted var eventNotificationDate: Date?
+    @Persisted var eventNotificationDate: Date!
     @Persisted var eventNotificationID = UUID().uuidString
     @Persisted var eventWithNotification: Bool!
+    
+    @Persisted var savedWithInternetConnetion: Bool!
 
     convenience init(name: String,
                      eventText: String?,
                      isCompleted: Bool?,
                      eventDate: Date?,
                      priorityID: Int?,
-                     eventNotificationDate: Date?,
+                     eventNotificationDate: Date!,
                      eventNotificationID: String!,
                      eventWithNotification: Bool!)
     {
@@ -52,6 +54,10 @@ class EventModel: Object {
         self.isCompleted = record.value(forKey: "isCompleted") as? Bool
         self.eventDate = record.value(forKey: "eventDate") as? Date
         self.priorityID = record.value(forKey: "priorityID") as? Int
+        
+        self.eventNotificationDate = record.value(forKey: "eventNotificationDate") as? Date
+        self.eventNotificationID = record.value(forKey: "eventNotificationID") as! String
+        self.eventWithNotification = record.value(forKey: "eventWithNotification") as? Bool
     }
     
     static override func primaryKey() -> String? {

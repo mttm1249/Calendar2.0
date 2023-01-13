@@ -21,6 +21,8 @@
 		DA20DC1E29670DE000ECD829 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA20DC1D29670DE000ECD829 /* Assets.xcassets */; };
 		DA20DC2129670DE000ECD829 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA20DC1F29670DE000ECD829 /* LaunchScreen.storyboard */; };
 		DA3B033B2967259E0038307C /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = DA3B033A2967259E0038307C /* FSCalendar */; };
+		DA4A547C29716A1200E86F6F /* CloudConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4A547A29716A1200E86F6F /* CloudConfig.swift */; };
+		DA4A547D29716A1200E86F6F /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4A547B29716A1200E86F6F /* CloudManager.swift */; };
 		DA50AE73296AC01000825C36 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA50AE72296AC01000825C36 /* Circle.swift */; };
 		DA50AE75296AC80A00825C36 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA50AE74296AC80A00825C36 /* ColorCollectionViewCell.swift */; };
 		DA6F8ABF296C02B20077DCDB /* ViewController - Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6F8ABE296C02B20077DCDB /* ViewController - Extensions.swift */; };
@@ -53,6 +55,8 @@
 		DA20DC1D29670DE000ECD829 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA20DC2029670DE000ECD829 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA20DC2229670DE000ECD829 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA4A547A29716A1200E86F6F /* CloudConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudConfig.swift; sourceTree = "<group>"; };
+		DA4A547B29716A1200E86F6F /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
 		DA50AE72296AC01000825C36 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		DA50AE74296AC80A00825C36 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		DA6D7666296EC3ED005BD178 /* MyEventPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyEventPlanner.entitlements; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 				DA00C104296B4A660091D13A /* ThemeManager.swift */,
 				DA6F8ABE296C02B20077DCDB /* ViewController - Extensions.swift */,
 				DAFD84B4296D53C4008B7F73 /* Alerts.swift */,
+				DA4A547A29716A1200E86F6F /* CloudConfig.swift */,
+				DA4A547B29716A1200E86F6F /* CloudManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -299,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA6F8ABF296C02B20077DCDB /* ViewController - Extensions.swift in Sources */,
+				DA4A547C29716A1200E86F6F /* CloudConfig.swift in Sources */,
 				DA50AE75296AC80A00825C36 /* ColorCollectionViewCell.swift in Sources */,
 				DA06743F29682F1B00817FC8 /* EventTableViewCell.swift in Sources */,
 				DA8D8E02297032C000CD764B /* TintTextField.swift in Sources */,
@@ -319,6 +326,7 @@
 				DAFD84B5296D53C4008B7F73 /* Alerts.swift in Sources */,
 				DAFD84B8296D5875008B7F73 /* WallpaperSetup.swift in Sources */,
 				DA00C105296B4A660091D13A /* ThemeManager.swift in Sources */,
+				DA4A547D29716A1200E86F6F /* CloudManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +473,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyEventPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 7GM9RUFL9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EventsCalendar/Supporting Files/Info.plist";
@@ -502,7 +510,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyEventPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 7GM9RUFL9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EventsCalendar/Supporting Files/Info.plist";
