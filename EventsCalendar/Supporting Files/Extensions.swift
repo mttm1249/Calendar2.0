@@ -10,6 +10,7 @@ import UIKit
 // MARK: Global
 let feedbackGenerator = UIImpactFeedbackGenerator()
 let time = Time()
+let userDefaults = UserDefaults.standard
 
 // MARK: - Hide Keyboard Method
 

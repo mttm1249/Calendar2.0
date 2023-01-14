@@ -10,7 +10,6 @@ import CloudKit
 import RealmSwift
 
 class CloudManager {
-    
     private static let privateCloudDatabase = CKContainer(identifier: CloudConfig.containerIdentifier).privateCloudDatabase
     private static var records: [CKRecord] = []
 
@@ -61,7 +60,6 @@ class CloudManager {
                 }
             }
         }
-        
         queryOperation.queryCompletionBlock = { cursor, error in
             if let error = error { print(error.localizedDescription); return }
             guard let cursor = cursor else { return }
@@ -86,7 +84,6 @@ class CloudManager {
     
     static func updateCloudData(event: EventModel) {
         let recordID = CKRecord.ID(recordName: event.recordID)
-        
         privateCloudDatabase.fetch(withRecordID: recordID) { (record, error) in
             if let record = record, error == nil {
                 DispatchQueue.main.async {
@@ -124,7 +121,6 @@ class CloudManager {
                 if let error = error { print(error); return }
             }
         }
-        
         privateCloudDatabase.add(queryOperation)
     }
         

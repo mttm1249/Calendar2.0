@@ -55,7 +55,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     }
     
     func loadWallpaperImage() {
-        guard let data = UserDefaults.standard.data(forKey: "wallpaperImage") else { return }
+        guard let data = userDefaults.data(forKey: "wallpaperImage") else { return }
         let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
         let image = UIImage(data: decoded)
         if image != nil && userDefaults.bool(forKey: "wallpaperSwitch") {

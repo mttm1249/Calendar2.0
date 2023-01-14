@@ -54,9 +54,13 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
     private func checkConnection() {
         monitor.pathUpdateHandler = { [self] path in
             if path.status == .satisfied {
-                self.addRecordButton.isEnabled = true
+                DispatchQueue.main.async {
+                    self.addRecordButton.isEnabled = true
+                }
             } else {
-                self.addRecordButton.isEnabled = false
+                DispatchQueue.main.async {
+                    self.addRecordButton.isEnabled = false
+                }
             }
         }
         let queue = DispatchQueue(label: "Monitor")

@@ -41,7 +41,7 @@ class WallpaperSetup: UIViewController {
         let loadedResult = userDefaults.bool(forKey: "wallpaperSwitch")
         wallpaperSwitch.isOn = loadedResult
         
-        guard let data = UserDefaults.standard.data(forKey: "wallpaperImage") else { return }
+        guard let data = userDefaults.data(forKey: "wallpaperImage") else { return }
         let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
         let image = UIImage(data: decoded)
         if image != nil {
@@ -67,7 +67,7 @@ class WallpaperSetup: UIViewController {
         guard wallpaperImage.image != nil else { return }
         guard let data = wallpaperImage.image!.jpegData(compressionQuality: 1.0) else { return }
         let encoded = try! PropertyListEncoder().encode(data)
-        UserDefaults.standard.set(encoded, forKey: "wallpaperImage")
+        userDefaults.set(encoded, forKey: "wallpaperImage")
     }
     
     @IBAction func applyButtonAction(_ sender: Any) {

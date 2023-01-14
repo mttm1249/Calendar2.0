@@ -7,8 +7,6 @@
 
 import UIKit
 
-let userDefaults = UserDefaults.standard
-
 class ThemeManager {
     var themeIsChanged = false
     
