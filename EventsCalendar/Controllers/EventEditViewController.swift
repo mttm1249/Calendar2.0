@@ -10,18 +10,14 @@ import RealmSwift
 import UserNotifications
 import Network
 
+let monitor = NWPathMonitor()
+let notificationCenter = UNUserNotificationCenter.current()
 
 class EventEditViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    let notificationCenter = UNUserNotificationCenter.current()
-    private let feedbackGeneratorForSaveAction = UIImpactFeedbackGenerator(style: .heavy)
-    private let feedbackGeneratorForColorChanger = UIImpactFeedbackGenerator(style: .rigid)
-    private let time = Time()
-    private let monitor = NWPathMonitor()
-
-    var colorCircles = [Circle]()
     var currentEvent: EventModel!
     var currentDate: Date!
+    private var colorCircles = [Circle]()
     private var priorityID = 0
     private var selectorIndexPath: IndexPath?
     private var notificationIsEnabled = false
@@ -54,17 +50,13 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         setupScreen()
         checkConnection()
     }
-        
+    
     private func checkConnection() {
-        monitor.pathUpdateHandler = { path in
+        monitor.pathUpdateHandler = { [self] path in
             if path.status == .satisfied {
-                DispatchQueue.main.async {
-                    self.addRecordButton.isEnabled = true
-                }
+                self.addRecordButton.isEnabled = true
             } else {
-                DispatchQueue.main.async {
-                    self.addRecordButton.isEnabled = false
-                }
+                self.addRecordButton.isEnabled = false
             }
         }
         let queue = DispatchQueue(label: "Monitor")
@@ -186,19 +178,19 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
                     currentEvent.eventWithNotification = false
                     removeLastNotification(from: currentEvent.eventNotificationID)
                 }
-                    CloudManager.updateCloudData(event: currentEvent)
+                CloudManager.updateCloudData(event: currentEvent)
             }
         } else {
-                CloudManager.saveDataToCloud(event: newEvent) { recordId in
-                    DispatchQueue.main.async {
-                        try! realm.write {
-                            newEvent.recordID = recordId
-                        }
+            CloudManager.saveDataToCloud(event: newEvent) { recordId in
+                DispatchQueue.main.async {
+                    try! realm.write {
+                        newEvent.recordID = recordId
                     }
                 }
+            }
             StorageManager.saveObject(newEvent)
         }
-        feedbackGeneratorForSaveAction.impactOccurred()
+        feedbackGenerator.impactOccurred(intensity: 1.0)
     }
     
     func createNotification(with uniqueID: String, alertText: String) {
@@ -220,13 +212,13 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
                     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: false)
                     let request = UNNotificationRequest(identifier: uniqueID, content: content, trigger: trigger)
                     
-                    self.notificationCenter.add(request) { error in
+                    notificationCenter.add(request) { error in
                         if error != nil {
                             print("Error " + error.debugDescription)
                             return
                         }
                     }
-                    self.showAlertForNotification(title: "Напоминание", message: "\(alertText) \(self.time.getDateStringForNotification(from: date))", okText: "OK") {
+                    self.showAlertForNotification(title: "Напоминание", message: "\(alertText) \(time.getDateStringForNotification(from: date))", okText: "OK") {
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
@@ -281,7 +273,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
             priorityID = colorCircle.colorID
             selectorIndexPath = indexPath
         }
-        feedbackGeneratorForColorChanger.impactOccurred()
+        feedbackGenerator.impactOccurred(intensity: 0.5)
         priorityColorsCollectionView.reloadData()
     }
 }

@@ -13,7 +13,7 @@
         <!--Settings-->
         <scene sceneID="4Ag-Ir-a7n">
             <objects>
-                <viewController title="Settings" id="Vcx-ZN-Ktf" customClass="SettingsViewController" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Settings" id="Vcx-ZN-Ktf" customClass="SettingsViewController" customModule="EventList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tgk-0N-iP7">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Настройки" id="Kuq-GN-G7V">
                         <barButtonItem key="rightBarButtonItem" title="Сбросить" style="plain" id="C5I-rW-eFx">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="resetButtonAction:" destination="Vcx-ZN-Ktf" id="6ET-QJ-kGT"/>
                             </connections>
@@ -90,7 +89,7 @@
         <!--Обои-->
         <scene sceneID="s5C-ej-ycg">
             <objects>
-                <viewController id="IXg-UU-pRH" customClass="WallpaperSetup" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IXg-UU-pRH" customClass="WallpaperSetup" customModule="EventList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JvP-Jl-90e">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,7 +156,7 @@
         <!--Main-->
         <scene sceneID="WOi-Rq-fGQ">
             <objects>
-                <viewController title="Main" id="D1L-OU-WtH" customClass="ViewController" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main" id="D1L-OU-WtH" customClass="ViewController" customModule="EventList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8aH-TO-cSY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -244,7 +243,7 @@
         <!--Поиск-->
         <scene sceneID="5lu-mX-BGq">
             <objects>
-                <viewController id="Jsu-fV-Wd5" customClass="SearchViewController" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Jsu-fV-Wd5" customClass="SearchViewController" customModule="EventList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Lzo-xB-VOO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -293,7 +292,7 @@
         <!--Выбор цвета-->
         <scene sceneID="rd2-Ny-9os">
             <objects>
-                <viewController id="wdC-wy-IYY" customClass="ColorSetup" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wdC-wy-IYY" customClass="ColorSetup" customModule="EventList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j3v-8s-xlC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,7 +308,7 @@
         <!--New record-->
         <scene sceneID="0Y8-3c-0KB">
             <objects>
-                <viewController storyboardIdentifier="editRecord" title="New record" id="UAi-6G-707" customClass="EventEditViewController" customModule="MyEventPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editRecord" title="New record" id="UAi-6G-707" customClass="EventEditViewController" customModule="EventList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="shz-mZ-ADn">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,7 +322,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UJn-Zw-hhz" customClass="TintTextField" customModule="MyEventPlanner" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UJn-Zw-hhz" customClass="TintTextField" customModule="EventList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="30.333333333333339" width="343" height="45.666666666666657"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -380,7 +379,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colorCell" id="vgJ-80-er6" customClass="ColorCollectionViewCell" customModule="MyEventPlanner" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="colorCell" id="vgJ-80-er6" customClass="ColorCollectionViewCell" customModule="EventList" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="5" width="40" height="40"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OlB-I7-UZF">

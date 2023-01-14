@@ -22,8 +22,6 @@ class EventModel: Object {
     @Persisted var eventNotificationID = UUID().uuidString
     @Persisted var eventWithNotification: Bool!
     
-    @Persisted var savedWithInternetConnetion: Bool!
-
     convenience init(name: String,
                      eventText: String?,
                      isCompleted: Bool?,

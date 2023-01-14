@@ -9,17 +9,12 @@ import UIKit
 import FSCalendar
 import RealmSwift
 import UserNotifications
-import Network
 
 class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate {
-    
-    let feedbackGenerator = UIImpactFeedbackGenerator()
-    let notificationCenter = UNUserNotificationCenter.current()
-    
-    let time = Time()
-    var defaultColors = [SettingsOption]()
-    var eventsArray: Results<EventModel>!
-    var selectedDate = Date()
+        
+    private var defaultColors = [SettingsOption]()
+    private var eventsArray: Results<EventModel>!
+    private var selectedDate = Date()
     let roundAddButton = UIButton()
     
     @IBOutlet weak var wallpaperImage: UIImageView!
@@ -40,7 +35,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         setupTheme()
         loadFromCloud()
     }
-            
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if ThemeManager.shared.themeIsChanged {
@@ -58,7 +53,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
             self.tableView.reloadData()
         }
     }
-     
+    
     func loadWallpaperImage() {
         guard let data = UserDefaults.standard.data(forKey: "wallpaperImage") else { return }
         let decoded = try! PropertyListDecoder().decode(Data.self, from: data)
@@ -140,6 +135,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
         tableView.reloadData()
+        feedbackGenerator.impactOccurred(intensity: 0.5)
     }
     
     // Shows events indication on dates
@@ -178,7 +174,7 @@ class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate
         if editingStyle == .delete {
             showAlert(title: "Внимание!", message: "Запись будет удалена со всех Ваших устройств!", okActionText: "ОК", cancelText: "Отмена") {
                 let event = EventsManager().eventsForDate(date: self.selectedDate, in: self.eventsArray).reversed()[indexPath.row]
-                self.notificationCenter.removePendingNotificationRequests(withIdentifiers: [event.eventNotificationID])
+                notificationCenter.removePendingNotificationRequests(withIdentifiers: [event.eventNotificationID])
                 CloudManager.deleteRecord(recordID: event.recordID)
                 StorageManager.deleteObject(event)
                 tableView.deleteRows(at: [indexPath].reversed(), with: .left)

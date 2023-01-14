@@ -47,7 +47,7 @@
 		DA06744029682F2800817FC8 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		DA067442296838E600817FC8 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		DA0674472968418400817FC8 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		DA20DC0E29670DDF00ECD829 /* MyEventPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEventPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA20DC0E29670DDF00ECD829 /* EventList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA20DC1129670DDF00ECD829 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA20DC1329670DDF00ECD829 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DA20DC1529670DDF00ECD829 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		DA20DC0F29670DDF00ECD829 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DA20DC0E29670DDF00ECD829 /* MyEventPlanner.app */,
+				DA20DC0E29670DDF00ECD829 /* EventList.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -224,9 +224,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DA20DC0D29670DDF00ECD829 /* MyEventPlanner */ = {
+		DA20DC0D29670DDF00ECD829 /* EventList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DA20DC2529670DE000ECD829 /* Build configuration list for PBXNativeTarget "MyEventPlanner" */;
+			buildConfigurationList = DA20DC2529670DE000ECD829 /* Build configuration list for PBXNativeTarget "EventList" */;
 			buildPhases = (
 				DA20DC0A29670DDF00ECD829 /* Sources */,
 				DA20DC0B29670DDF00ECD829 /* Frameworks */,
@@ -236,14 +236,14 @@
 			);
 			dependencies = (
 			);
-			name = MyEventPlanner;
+			name = EventList;
 			packageProductDependencies = (
 				DA3B033A2967259E0038307C /* FSCalendar */,
 				DA0674452968392000817FC8 /* RealmSwift */,
 				DAC54D6B296AF4BC00125ADF /* Pikko */,
 			);
 			productName = EventsCalendar;
-			productReference = DA20DC0E29670DDF00ECD829 /* MyEventPlanner.app */;
+			productReference = DA20DC0E29670DDF00ECD829 /* EventList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -261,7 +261,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DA20DC0929670DDF00ECD829 /* Build configuration list for PBXProject "MyEventPlanner" */;
+			buildConfigurationList = DA20DC0929670DDF00ECD829 /* Build configuration list for PBXProject "EventList" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -279,7 +279,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DA20DC0D29670DDF00ECD829 /* MyEventPlanner */,
+				DA20DC0D29670DDF00ECD829 /* EventList */,
 			);
 		};
 /* End PBXProject section */
@@ -473,11 +473,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyEventPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 7GM9RUFL9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EventsCalendar/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = MyEventPlanner;
+				INFOPLIST_KEY_CFBundleDisplayName = EventList;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Приложение хочет использовать Ваши изображения.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -510,11 +510,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyEventPlanner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 7GM9RUFL9F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "EventsCalendar/Supporting Files/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = MyEventPlanner;
+				INFOPLIST_KEY_CFBundleDisplayName = EventList;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Приложение хочет использовать Ваши изображения.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -542,7 +542,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DA20DC0929670DDF00ECD829 /* Build configuration list for PBXProject "MyEventPlanner" */ = {
+		DA20DC0929670DDF00ECD829 /* Build configuration list for PBXProject "EventList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA20DC2329670DE000ECD829 /* Debug */,
@@ -551,7 +551,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DA20DC2529670DE000ECD829 /* Build configuration list for PBXNativeTarget "MyEventPlanner" */ = {
+		DA20DC2529670DE000ECD829 /* Build configuration list for PBXNativeTarget "EventList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA20DC2629670DE000ECD829 /* Debug */,

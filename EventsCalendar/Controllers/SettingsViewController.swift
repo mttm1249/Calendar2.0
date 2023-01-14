@@ -16,8 +16,7 @@ struct SettingsOption {
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ColorUpdate {
     
-    private let feedbackGeneratorForOptions = UIImpactFeedbackGenerator(style: .rigid)
-    var options = [SettingsOption]()
+    private var options = [SettingsOption]()
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var optionsTableView: UITableView!
@@ -112,7 +111,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             performSegue(withIdentifier: "colorSetup", sender: self)
         }
-        feedbackGeneratorForOptions.impactOccurred()
+        feedbackGenerator.impactOccurred(intensity: 0.5)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

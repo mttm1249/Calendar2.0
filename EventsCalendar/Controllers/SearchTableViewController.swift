@@ -51,6 +51,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchController.searchBar.text = ""
         showAllActive.toggle()
         tableView.reloadWithAnimation()
+        feedbackGenerator.impactOccurred(intensity: 0.5)
     }
     
     // MARK: - Table view data source

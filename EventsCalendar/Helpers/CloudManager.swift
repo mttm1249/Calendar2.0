@@ -15,7 +15,6 @@ class CloudManager {
     private static var records: [CKRecord] = []
 
     static func saveDataToCloud(event: EventModel, closure: @escaping (String) -> ()) {
-                
         let record = CKRecord(recordType: "EventModel")
         record.setValue(event.eventID, forKey: "eventID")
         record.setValue(event.name, forKey: "name")
@@ -86,7 +85,6 @@ class CloudManager {
     }
     
     static func updateCloudData(event: EventModel) {
-        
         let recordID = CKRecord.ID(recordName: event.recordID)
         
         privateCloudDatabase.fetch(withRecordID: recordID) { (record, error) in

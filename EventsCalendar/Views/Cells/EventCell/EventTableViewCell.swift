@@ -8,9 +8,7 @@
 import UIKit
 
 class EventTableViewCell: UITableViewCell {
-    
-    let time = Time()
-    
+        
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventText: UILabel!
     @IBOutlet weak var completeIndicator: UIView!
@@ -28,7 +26,7 @@ class EventTableViewCell: UITableViewCell {
     }
     
     func setup(model: EventModel) {
-        if model.eventWithNotification {
+        if model.eventWithNotification && model.eventNotificationDate > Date() {
             notificationInfoView.isHidden = false
             notificationDateLabel.text = time.getDateStringForNotification(from: model.eventNotificationDate)
         } else {
