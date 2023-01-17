@@ -10,9 +10,6 @@ import RealmSwift
 import UserNotifications
 import Network
 
-let monitor = NWPathMonitor()
-let notificationCenter = UNUserNotificationCenter.current()
-
 class EventEditViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var currentEvent: EventModel!

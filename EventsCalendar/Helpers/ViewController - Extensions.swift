@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension ViewController {
+extension MainViewController {
     func setDefaultTheme() {
         userDefaults.set(true, forKey: "defaultThemeActive")
         userDefaults.setColor(color: ThemeManager.shared.color1, forKey: "color1")

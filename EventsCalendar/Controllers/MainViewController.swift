@@ -10,7 +10,7 @@ import FSCalendar
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate {
         
     private var defaultColors = [SettingsOption]()
     private var eventsArray: Results<EventModel>!
