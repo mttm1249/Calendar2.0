@@ -1,5 +1,5 @@
 //
-//  ColorSetup.swift
+//  ColorSetupViewController.swift
 //  EventsCalendar
 //
 //  Created by Денис on 08.01.2023.
@@ -13,7 +13,7 @@ protocol ColorUpdate: AnyObject {
     func reloadColors()
 }
 
-class ColorSetup: UIViewController, PikkoDelegate {
+class ColorSetupViewController: UIViewController, PikkoDelegate {
     
     var currentOption: SettingsOption!
     weak var delegate: ColorUpdate?

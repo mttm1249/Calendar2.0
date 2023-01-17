@@ -9,8 +9,8 @@ import UIKit
 import Network
 
 // MARK: Global
-let feedbackGenerator = UIImpactFeedbackGenerator()
 let time = Time()
+let feedbackGenerator = UIImpactFeedbackGenerator()
 let userDefaults = UserDefaults.standard
 let monitor = NWPathMonitor()
 let notificationCenter = UNUserNotificationCenter.current()

@@ -7,13 +7,15 @@
 
 import UIKit
 import FSCalendar
-import RealmSwift
 import UserNotifications
+import CoreData
 
-class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
         
+    var fetchedResultsController: NSFetchedResultsController<Event>?
+
     private var defaultColors = [SettingsOption]()
-    private var eventsArray: Results<EventModel>!
+    private var eventsArray: [Event] = []
     private var selectedDate = Date()
     let roundAddButton = UIButton()
     
@@ -24,7 +26,6 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventsArray = realm.objects(EventModel.self)
         calendar.dataSource = self
         calendar.delegate = self
         tableView.dataSource = self
@@ -33,7 +34,7 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         setupAddButton()
         setupCalendar()
         setupTheme()
-        loadFromCloud()
+        setFetchedResultsController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,16 +43,34 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
             ThemeManager.shared.themeIsChanged = false
             setupTheme()
         }
+        fetchData()
         calendar.reloadData()
         tableView.reloadData()
     }
+        
+    func setFetchedResultsController() {
+        let fetch = NSFetchRequest<Event>(entityName: "Event")
+        fetch.sortDescriptors = [NSSortDescriptor(key: "eventDate", ascending: true)]
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: CoreDataManager.managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController?.delegate = self
+    }
     
-    private func loadFromCloud() {
-        CloudManager.fetchDataFromCloud(events: eventsArray) { (event) in
-            StorageManager.saveObject(event)
-            self.calendar.reloadData()
-            self.tableView.reloadData()
+    func fetchData() {
+        do {
+            try fetchedResultsController?.performFetch()
+            if fetchedResultsController?.fetchedObjects != nil {
+                eventsArray = (fetchedResultsController?.fetchedObjects)!
+            }
+        } catch {
+            print("Error fetching products")
         }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        if fetchedResultsController?.fetchedObjects != nil {
+            eventsArray = (fetchedResultsController?.fetchedObjects)!
+        }
+        calendar.reloadData()
     }
     
     func loadWallpaperImage() {
@@ -125,7 +144,7 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
             let editVC = segue.destination as! EventEditViewController
             editVC.currentDate = selectedDate
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray).reversed()[indexPath.row]
+            let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray)[indexPath.row]
             editVC.currentEvent = event
         }
     }
@@ -158,7 +177,7 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventTableViewCell {
-            let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray).reversed()[indexPath.row]
+            let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray)[indexPath.row]
             cell.setup(model: event)
             return cell
         }
@@ -173,12 +192,15 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             showAlert(title: "Внимание!", message: "Запись будет удалена со всех Ваших устройств!", okActionText: "ОК", cancelText: "Отмена") {
-                let event = EventsManager().eventsForDate(date: self.selectedDate, in: self.eventsArray).reversed()[indexPath.row]
-                notificationCenter.removePendingNotificationRequests(withIdentifiers: [event.eventNotificationID])
-                CloudManager.deleteRecord(recordID: event.recordID)
-                StorageManager.deleteObject(event)
-                tableView.deleteRows(at: [indexPath].reversed(), with: .left)
-                self.calendar.reloadData()
+                let event = EventsManager().eventsForDate(date: self.selectedDate, in: self.eventsArray)[indexPath.row]
+                let eventID = event.eventNotificationID!.uuidString
+                notificationCenter.removePendingNotificationRequests(withIdentifiers: [eventID])
+                
+                guard let fetchedEvent = self.fetchedResultsController?.object(at: indexPath) else { return }
+                CoreDataManager.managedContext.delete(fetchedEvent)
+                CoreDataManager.shared.saveContext()
+                self.fetchData()
+                tableView.deleteRows(at: [indexPath], with: .left)
             }
         }
     }
@@ -187,16 +209,17 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         
         let editAction = UIContextualAction(style: .normal, title: "") { [self] (action, view, completion) in
             let indexesToRedraw = [indexPath]
-            let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray).reversed()[indexPath.row]
-            realm.beginWrite()
-            if event.isCompleted! {
-                event.isCompleted = false
-            } else {
+            let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray)[indexPath.row]
+            
+            if !event.isCompleted {
                 event.isCompleted = true
+            } else {
+                event.isCompleted = false
             }
-            try! realm.commitWrite()
-            CloudManager.updateCloudData(event: event)
-            tableView.reloadRows(at: indexesToRedraw.reversed(), with: .fade)
+            guard let fetchedEvent = self.fetchedResultsController?.object(at: indexPath) else { return }
+            fetchedEvent.isCompleted = event.isCompleted
+            CoreDataManager.shared.saveContext()
+            tableView.reloadRows(at: indexesToRedraw, with: .fade)
             tableView.reloadData()
         }
         editAction.backgroundColor = .systemGreen
