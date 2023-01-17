@@ -6,12 +6,13 @@
 //
 
 import UIKit
-import RealmSwift
+import CoreData
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+   
     @IBOutlet weak var tableView: UITableView!
-    
+
+    var fetchedResultsController: NSFetchedResultsController<Event>?
     let searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
@@ -22,10 +23,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     var showAllActive = false
-    
-    private var allEvents: Results<EventModel>!
-    private var foundedEvents: Results<EventModel>!
 
+    private var allEvents: [Event] = []
+    private var foundedEvents: [Event] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,31 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         view.backgroundColor = userDefaults.colorFor(key: "color11")
         tableView.delegate = self
         tableView.dataSource = self
-        allEvents = realm.objects(EventModel.self)
         showSearchBar()
+        setFetchedResultsController()
+        fetchData()
+    }
+    
+    func setFetchedResultsController() {
+        let fetch = NSFetchRequest<Event>(entityName: "Event")
+        fetch.sortDescriptors = [NSSortDescriptor(key: "eventDate", ascending: true)]
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: CoreDataManager.managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController?.delegate = self
+    }
+    
+    func fetchData() {
+        do {
+            try fetchedResultsController?.performFetch()
+            if fetchedResultsController?.fetchedObjects != nil {
+                allEvents = (fetchedResultsController?.fetchedObjects)!
+            }
+        } catch {
+            print("Error fetching products")
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.reloadData()
     }
     
     // MARK: Search controller
@@ -53,7 +76,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.reloadWithAnimation()
         feedbackGenerator.impactOccurred(intensity: 0.5)
     }
-    
+
     // MARK: - Table view data source
 
     // Register custom TableView cell
@@ -74,29 +97,33 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventTableViewCell {
-            if isFiltering && foundedEvents != nil {
-                let event = foundedEvents.reversed()[indexPath.row]
+            if isFiltering {
+                let event = foundedEvents[indexPath.row]
                 cell.setup(model: event)
                 return cell
             } else if !isFiltering && showAllActive {
-                allEvents = allEvents.sorted(byKeyPath: "priorityID", ascending: true)
-                let event = allEvents.reversed()[indexPath.row]
+                allEvents.sort(by: { $0.priorityID < $1.priorityID })
+                let event = allEvents[indexPath.row]
                 cell.setup(model: event)
                 return cell
             }
         }
         return UITableViewCell()
-        
+
     }
 }
 
 extension SearchViewController: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
+        filterContentForSearchText(searchController.searchBar.text!.lowercased())
     }
     
     private func filterContentForSearchText(_ searchText: String) {
-        foundedEvents = allEvents.filter("name CONTAINS[cd] %@ OR eventText CONTAINS[cd] %@", searchText, searchText)
+        foundedEvents = allEvents.filter { ($0.name?.lowercased().contains(searchText))! }
+        if foundedEvents.count == 0 {
+            foundedEvents = allEvents.filter { ($0.eventText?.lowercased().contains(searchText))! }
+        }
         tableView.reloadData()
     }
 }

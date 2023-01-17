@@ -60,16 +60,16 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let color12 = userDefaults.colorFor(key: "color12")
         let color13 = userDefaults.colorFor(key: "color13")
         
-        let colorTheme = [SettingsOption(name: "Название месяца", colorOption: color1, key: "color1"),
-                          SettingsOption(name: "Названия дней недели", colorOption: color2, key: "color2"),
-                          SettingsOption(name: "Дни выбранного месяца", colorOption: color3, key: "color3"),
-                          SettingsOption(name: "Дни следующего месяца", colorOption: color4, key: "color4"),
-                          SettingsOption(name: "Цвет индикатора", colorOption: color5, key: "color5"),
-                          SettingsOption(name: "Цвет индикатора (выбран)", colorOption: color13, key: "color13"),
-                          SettingsOption(name: "Сегодняшний день", colorOption: color6, key: "color6"),
-                          SettingsOption(name: "Выбранный день", colorOption: color7, key: "color7"),
-                          SettingsOption(name: "Выбран сегодняшний день", colorOption: color8, key: "color8"),
+        let colorTheme = [SettingsOption(name: "Месяц", colorOption: color1, key: "color1"),
+                          SettingsOption(name: "Дни недели", colorOption: color2, key: "color2"),
+                          SettingsOption(name: "Будние дни", colorOption: color3, key: "color3"),
                           SettingsOption(name: "Выходные дни", colorOption: color9, key:  "color9"),
+                          SettingsOption(name: "Другой месяц", colorOption: color4, key: "color4"),
+                          SettingsOption(name: "Индикатор заметки", colorOption: color5, key: "color5"),
+                          SettingsOption(name: "Индикатор заметки (выбран)", colorOption: color13, key: "color13"),
+                          SettingsOption(name: "Текущая дата", colorOption: color6, key: "color6"),
+                          SettingsOption(name: "Выбранный день", colorOption: color7, key: "color7"),
+                          SettingsOption(name: "Выбрана текущая дата", colorOption: color8, key: "color8"),
                           SettingsOption(name: "Цвет выбранной даты", colorOption: color10, key: "color10"),
                           SettingsOption(name: "Кнопка добавления записи", colorOption: color12, key: "color12"),
                           SettingsOption(name: "Цвет фона", colorOption: color11, key: "color11"),
@@ -84,7 +84,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "colorSetup" {
             guard let indexPath = optionsTableView.indexPathForSelectedRow else { return }
-            let colorVC = segue.destination as! ColorSetup
+            let colorVC = segue.destination as! ColorSetupViewController
             let option = options[indexPath.row]
             colorVC.currentOption = option
             colorVC.delegate = self

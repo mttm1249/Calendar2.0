@@ -25,16 +25,16 @@ class EventTableViewCell: UITableViewCell {
         priorityIndicator.layer.borderColor = UIColor.lightGray.cgColor
     }
     
-    func setup(model: EventModel) {
-        if model.eventWithNotification && model.eventNotificationDate > Date() {
+    func setup(model: Event) {
+        if model.eventWithNotification && model.eventNotificationDate! > Date() {
             notificationInfoView.isHidden = false
-            notificationDateLabel.text = time.getDateStringForNotification(from: model.eventNotificationDate)
+            notificationDateLabel.text = time.getDateStringForNotification(from: model.eventNotificationDate!)
         } else {
             notificationInfoView.isHidden = true
         }
         eventName.text = model.name
         eventText.text = model.eventText
-        if model.isCompleted! {
+        if model.isCompleted {
             completeIndicator.isHidden = false
             completeIndicator.backgroundColor = .systemGreen
         } else {
@@ -42,9 +42,6 @@ class EventTableViewCell: UITableViewCell {
             completeIndicator.backgroundColor = .clear
         }
         switch model.priorityID {
-        case 0:
-            priorityIndicator.backgroundColor = .clear
-            priorityIndicator.layer.borderWidth = 1
         case 1:
             priorityIndicator.backgroundColor = .color1
             priorityIndicator.layer.borderWidth = 0
@@ -66,6 +63,9 @@ class EventTableViewCell: UITableViewCell {
         case 7:
             priorityIndicator.backgroundColor = .color7
             priorityIndicator.layer.borderWidth = 0
+        case 8:
+            priorityIndicator.backgroundColor = .clear
+            priorityIndicator.layer.borderWidth = 1
         default:
             break
         }

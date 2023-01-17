@@ -1,5 +1,5 @@
 //
-//  WallpaperSetup.swift
+//  WallpaperSetupViewController.swift
 //  EventsCalendar
 //
 //  Created by Денис on 10.01.2023.
@@ -8,7 +8,7 @@
 import UIKit
 import PhotosUI
 
-class WallpaperSetup: UIViewController {
+class WallpaperSetupViewController: UIViewController {
     
     private var itemProviders = [NSItemProvider]()
     
@@ -74,6 +74,7 @@ class WallpaperSetup: UIViewController {
         saveImage()
         ThemeManager.shared.themeIsChanged = true
         navigationController?.popViewController(animated: true)
+        feedbackGenerator.impactOccurred(intensity: 1.0)
     }
     
     @IBAction func wallpaperShowSwitchAction(_ sender: Any) {
@@ -82,7 +83,7 @@ class WallpaperSetup: UIViewController {
     }
 }
 
-extension WallpaperSetup: PHPickerViewControllerDelegate {
+extension WallpaperSetupViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)
         
