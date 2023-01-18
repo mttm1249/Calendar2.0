@@ -69,6 +69,7 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         if fetchedResultsController?.fetchedObjects != nil {
             eventsArray = (fetchedResultsController?.fetchedObjects)!
+            tableView.reloadData()
         }
         calendar.reloadData()
     }
@@ -200,7 +201,6 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
                 CoreDataManager.managedContext.delete(fetchedEvent)
                 CoreDataManager.shared.saveContext()
                 self.fetchData()
-                tableView.deleteRows(at: [indexPath], with: .left)
             }
         }
     }
