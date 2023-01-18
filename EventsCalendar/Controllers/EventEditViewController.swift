@@ -130,7 +130,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
                                   eventNotificationDate: datePicker.date,
                                   eventNotificationID: uniqueRequestID,
                                   eventWithNotification: notificationIsEnabled)
-
+        
         // Create new notification
         if notificationIsEnabled && currentEvent == nil {
             newEvent.eventNotificationDate = datePicker.date
@@ -142,27 +142,27 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         
         // Update current event
         if currentEvent != nil {
-                currentEvent.name = newEvent.name
-                currentEvent.eventText = newEvent.eventText
-                currentEvent.priorityID = Int16(priorityID)
-                
-                // Update current notification if it exists
-                if notificationIsEnabled {
-                    if currentEvent.eventWithNotification && datePicker.date != currentEvent.eventNotificationDate {
-                        currentEvent.eventNotificationDate = datePicker.date
-                        createNotification(with: currentEvent.eventNotificationID!, alertText: "Было изменено на")
-                        // Update existed (event without notification)
-                    } else if !currentEvent.eventWithNotification {
-                        currentEvent.eventWithNotification = true
-                        currentEvent.eventNotificationDate = datePicker.date
-                        createNotification(with: currentEvent.eventNotificationID!, alertText: "Было установлено на")
-                        // Just update record (without update current notification)
-                    } else {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+            currentEvent.name = newEvent.name
+            currentEvent.eventText = newEvent.eventText
+            currentEvent.priorityID = Int16(priorityID)
+            
+            // Update current notification if it exists
+            if notificationIsEnabled {
+                if currentEvent.eventWithNotification && datePicker.date != currentEvent.eventNotificationDate {
+                    currentEvent.eventNotificationDate = datePicker.date
+                    createNotification(with: currentEvent.eventNotificationID!, alertText: "Было изменено на")
+                    // Update existed (event without notification)
+                } else if !currentEvent.eventWithNotification {
+                    currentEvent.eventWithNotification = true
+                    currentEvent.eventNotificationDate = datePicker.date
+                    createNotification(with: currentEvent.eventNotificationID!, alertText: "Было установлено на")
+                    // Just update record (without update current notification)
                 } else {
-                    currentEvent.eventWithNotification = false
-                    removeLastNotification(from: currentEvent.eventNotificationID!.uuidString)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            } else {
+                removeLastNotification(from: currentEvent.eventNotificationID!.uuidString)
+                currentEvent.eventWithNotification = false
                 CoreDataManager.shared.saveContext()
             }
         } else {
