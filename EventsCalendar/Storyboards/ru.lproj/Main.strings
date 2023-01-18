@@ -1,0 +1,51 @@
+
+/* Class = "UINavigationItem"; title = "Выбор цвета"; ObjectID = "2oB-fd-PoN"; */
+"2oB-fd-PoN.title" = "Выбор цвета";
+
+/* Class = "UIBarButtonItem"; title = "Сбросить"; ObjectID = "C5I-rW-eFx"; */
+"C5I-rW-eFx.title" = "Сбросить";
+
+/* Class = "UIViewController"; title = "Main"; ObjectID = "D1L-OU-WtH"; */
+"D1L-OU-WtH.title" = "Main";
+
+/* Class = "UIBarButtonItem"; title = "Установить"; ObjectID = "GYa-aT-Fje"; */
+"GYa-aT-Fje.title" = "Установить";
+
+/* Class = "UINavigationItem"; title = "Настройки"; ObjectID = "Kuq-GN-G7V"; */
+"Kuq-GN-G7V.title" = "Настройки";
+
+/* Class = "UILabel"; text = "Цвет для записи:"; ObjectID = "LsH-Zf-NFQ"; */
+"LsH-Zf-NFQ.text" = "Цвет для записи:";
+
+/* Class = "UIViewController"; title = "New record"; ObjectID = "UAi-6G-707"; */
+"UAi-6G-707.title" = "New record";
+
+/* Class = "UIViewController"; title = "Settings"; ObjectID = "Vcx-ZN-Ktf"; */
+"Vcx-ZN-Ktf.title" = "Settings";
+
+/* Class = "UIBarButtonItem"; title = "Сохранить"; ObjectID = "YGw-4L-s04"; */
+"YGw-4L-s04.title" = "Сохранить";
+
+/* Class = "UILabel"; text = "Отображать обои"; ObjectID = "bPi-sQ-B09"; */
+"bPi-sQ-B09.text" = "Отображать обои";
+
+/* Class = "UILabel"; text = "Название:"; ObjectID = "dWJ-Pv-LZw"; */
+"dWJ-Pv-LZw.text" = "Название:";
+
+/* Class = "UINavigationItem"; title = "Поиск"; ObjectID = "fmZ-uR-r8b"; */
+"fmZ-uR-r8b.title" = "Поиск";
+
+/* Class = "UILabel"; text = "Заметка:"; ObjectID = "itl-1b-tCk"; */
+"itl-1b-tCk.text" = "Заметка:";
+
+/* Class = "UIBarButtonItem"; title = "Показать все"; ObjectID = "lJO-pv-6wg"; */
+"lJO-pv-6wg.title" = "Показать все";
+
+/* Class = "UINavigationItem"; title = "Календарь"; ObjectID = "mFD-Wk-TbJ"; */
+"mFD-Wk-TbJ.title" = "Календарь";
+
+/* Class = "UILabel"; text = "Напоминание для записи:"; ObjectID = "mcI-GR-Cjk"; */
+"mcI-GR-Cjk.text" = "Напоминание для записи:";
+
+/* Class = "UINavigationItem"; title = "Обои"; ObjectID = "wTb-8P-DHK"; */
+"wTb-8P-DHK.title" = "Обои";

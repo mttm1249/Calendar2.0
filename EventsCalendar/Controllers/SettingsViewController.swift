@@ -60,20 +60,20 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let color12 = userDefaults.colorFor(key: "color12")
         let color13 = userDefaults.colorFor(key: "color13")
         
-        let colorTheme = [SettingsOption(name: "Месяц", colorOption: color1, key: "color1"),
-                          SettingsOption(name: "Дни недели", colorOption: color2, key: "color2"),
-                          SettingsOption(name: "Будние дни", colorOption: color3, key: "color3"),
-                          SettingsOption(name: "Выходные дни", colorOption: color9, key:  "color9"),
-                          SettingsOption(name: "Другой месяц", colorOption: color4, key: "color4"),
-                          SettingsOption(name: "Индикатор заметки", colorOption: color5, key: "color5"),
-                          SettingsOption(name: "Индикатор заметки (выбран)", colorOption: color13, key: "color13"),
-                          SettingsOption(name: "Текущая дата", colorOption: color6, key: "color6"),
-                          SettingsOption(name: "Выбранный день", colorOption: color7, key: "color7"),
-                          SettingsOption(name: "Выбрана текущая дата", colorOption: color8, key: "color8"),
-                          SettingsOption(name: "Цвет выбранной даты", colorOption: color10, key: "color10"),
-                          SettingsOption(name: "Кнопка добавления записи", colorOption: color12, key: "color12"),
-                          SettingsOption(name: "Цвет фона", colorOption: color11, key: "color11"),
-                          SettingsOption(name: "Обои", colorOption: .clear, id: 1)
+        let colorTheme = [SettingsOption(name: LocalizableText.Settings.optionName1, colorOption: color1, key: "color1"),
+                          SettingsOption(name: LocalizableText.Settings.optionName2, colorOption: color2, key: "color2"),
+                          SettingsOption(name: LocalizableText.Settings.optionName3, colorOption: color3, key: "color3"),
+                          SettingsOption(name: LocalizableText.Settings.optionName4, colorOption: color9, key:  "color9"),
+                          SettingsOption(name: LocalizableText.Settings.optionName5, colorOption: color4, key: "color4"),
+                          SettingsOption(name: LocalizableText.Settings.optionName6, colorOption: color5, key: "color5"),
+                          SettingsOption(name: LocalizableText.Settings.optionName7, colorOption: color13, key: "color13"),
+                          SettingsOption(name: LocalizableText.Settings.optionName8, colorOption: color6, key: "color6"),
+                          SettingsOption(name: LocalizableText.Settings.optionName9, colorOption: color7, key: "color7"),
+                          SettingsOption(name: LocalizableText.Settings.optionName10, colorOption: color8, key: "color8"),
+                          SettingsOption(name: LocalizableText.Settings.optionName11, colorOption: color10, key: "color10"),
+                          SettingsOption(name: LocalizableText.Settings.optionName12, colorOption: color12, key: "color12"),
+                          SettingsOption(name: LocalizableText.Settings.optionName13, colorOption: color11, key: "color11"),
+                          SettingsOption(name: LocalizableText.Settings.optionName14, colorOption: .clear, id: 1)
         ]
         for color in colorTheme {
             options.append(color)
@@ -119,7 +119,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func resetButtonAction(_ sender: Any) {
-        showAlert(title: "Внимание!", message: "Все настройки будут сброшены", okActionText: "ОК", cancelText: "Отмена") {
+        showAlert(title: LocalizableText.Settings.titleText, message: LocalizableText.Settings.messageText, okActionText: "OK", cancelText: LocalizableText.Settings.cancelText) {
             userDefaults.set(false, forKey: "wallpaperSwitch")
             ThemeManager.shared.themeIsChanged = true
             self.performSegue(withIdentifier: "unwindSegue", sender: self)

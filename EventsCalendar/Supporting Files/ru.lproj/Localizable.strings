@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  EventList
+
+  Created by Денис on 18.01.2023.
+  
+*/
+
+"SettingsViewController.optionName1"  = "Месяц";
+"SettingsViewController.optionName2"  = "Дни недели";
+"SettingsViewController.optionName3"  = "Будние дни";
+"SettingsViewController.optionName4"  = "Выходные дни";
+"SettingsViewController.optionName5"  = "Другой месяц";
+"SettingsViewController.optionName6"  = "Индикатор заметки";
+"SettingsViewController.optionName7"  = "Индикатор заметки (выбран)";
+"SettingsViewController.optionName8"  = "Текущая дата";
+"SettingsViewController.optionName9"  = "Выбранный день";
+"SettingsViewController.optionName10" = "Выбрана текущая дата";
+"SettingsViewController.optionName11" = "Выбрана текущая дата (число)";
+"SettingsViewController.optionName12" = "Кнопка добавления записи";
+"SettingsViewController.optionName13" = "Цвет фона";
+"SettingsViewController.optionName14" = "Обои";
+
+"SettingsViewController.titleText" = "Внимание";
+"SettingsViewController.messageText" = "Все настройки будут сброшены";
+"SettingsViewController.cancelText" = "Отмена";
+
+"MainViewController.titleText" = "Внимание";
+"MainViewController.messageText" = "Запись будет удалена со всех Ваших устройств!";
+"MainViewController.cancelText" = "Отмена";
+
+"EventEditViewController.titleText" = "Напоминания";
+"EventEditViewController.messageText" = "Для того что бы получать напоминания, активируйте функцию уведомлений в настройках";
+"EventEditViewController.settingsText" = "Настройки";
+"EventEditViewController.cancelText" = "Отмена";
+
+"EventEditViewController.notificationTitleText" = "Напоминание";
+"EventEditViewController.createdNewText" = "Было установлено на";
+"EventEditViewController.changedExistedText" = "Было изменено на";

@@ -64,7 +64,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func showSearchBar() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Искать в заметках"
         navigationItem.searchController = searchController
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false

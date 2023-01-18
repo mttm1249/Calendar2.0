@@ -191,7 +191,7 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            showAlert(title: "Внимание!", message: "Запись будет удалена со всех Ваших устройств!", okActionText: "ОК", cancelText: "Отмена") {
+            showAlert(title: LocalizableText.MainPage.titleText, message: LocalizableText.MainPage.messageText, okActionText: "OK", cancelText: LocalizableText.MainPage.cancelText) {
                 let event = EventsManager().eventsForDate(date: self.selectedDate, in: self.eventsArray)[indexPath.row]
                 let eventID = event.eventNotificationID!.uuidString
                 notificationCenter.removePendingNotificationRequests(withIdentifiers: [eventID])

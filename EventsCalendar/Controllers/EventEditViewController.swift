@@ -12,7 +12,6 @@ import Network
 
 class EventEditViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    
     var currentEvent: Event!
     var currentDate: Date!
     private var colorCircles = [Circle]()
@@ -41,9 +40,16 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         eventTextOutlet.backgroundColor = .white
         priorityColorsCollectionView.dataSource = self
         priorityColorsCollectionView.delegate = self
-        datePicker.isHidden = true
+        datePickerSetup()
         checkNotificationPermission()
         setupScreen()
+    }
+    
+    private func datePickerSetup() {
+        datePicker.isHidden = true
+        let currentLocaleID = Locale.current.identifier
+        let currentLocale = Locale(identifier: currentLocaleID)
+        datePicker.locale = currentLocale
     }
     
     private func checkNotificationPermission() {
@@ -61,7 +67,10 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         datePicker.isHidden.toggle()
         notificationIsEnabled.toggle()
         if !permissionGrantedForNotifications {
-            showAlertForSettings(title: "Напоминания", message: "Для того что бы получать напоминания, активируйте функцию уведомлений в настройках.", settingsText: "Настройки", cancelText: "Отмена")
+            showAlertForSettings(title: LocalizableText.EventEditPage.titleText,
+                                 message: LocalizableText.EventEditPage.messageText,
+                                 settingsText: LocalizableText.EventEditPage.settingsText,
+                                 cancelText: LocalizableText.EventEditPage.cancelText)
         }
     }
     
@@ -134,7 +143,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         // Create new notification
         if notificationIsEnabled && currentEvent == nil {
             newEvent.eventNotificationDate = datePicker.date
-            createNotification(with: uniqueRequestID, alertText: "Было установлено на")
+            createNotification(with: uniqueRequestID, alertMessage: LocalizableText.EventEditPage.createdNewText)
             newEvent.eventWithNotification = true
         } else {
             newEvent.eventWithNotification = false
@@ -150,12 +159,12 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
             if notificationIsEnabled {
                 if currentEvent.eventWithNotification && datePicker.date != currentEvent.eventNotificationDate {
                     currentEvent.eventNotificationDate = datePicker.date
-                    createNotification(with: currentEvent.eventNotificationID!, alertText: "Было изменено на")
+                    createNotification(with: currentEvent.eventNotificationID!, alertMessage: LocalizableText.EventEditPage.changedExistedText)
                     // Update existed (event without notification)
                 } else if !currentEvent.eventWithNotification {
                     currentEvent.eventWithNotification = true
                     currentEvent.eventNotificationDate = datePicker.date
-                    createNotification(with: currentEvent.eventNotificationID!, alertText: "Было установлено на")
+                    createNotification(with: currentEvent.eventNotificationID!, alertMessage: LocalizableText.EventEditPage.createdNewText)
                     // Just update record (without update current notification)
                 } else {
                     self.navigationController?.popViewController(animated: true)
@@ -178,7 +187,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         feedbackGenerator.impactOccurred(intensity: 1.0)
     }
     
-    func createNotification(with uniqueID: UUID, alertText: String) {
+    func createNotification(with uniqueID: UUID, alertMessage: String) {
         notificationCenter.getNotificationSettings { (settings) in
             DispatchQueue.main.async {
                 let dv = ""
@@ -203,7 +212,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
                             return
                         }
                     }
-                    self.showAlertForNotification(title: "Напоминание", message: "\(alertText) \(time.getDateStringForNotification(from: date))", okText: "OK") {
+                    self.showAlertForNotification(title: LocalizableText.EventEditPage.notificationTitleText, message: "\(alertMessage) \(time.getDateStringForNotification(from: date))", okText: "OK") {
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
@@ -221,7 +230,6 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
     private func removeLastNotification(from id: String) {
         guard currentEvent != nil && currentEvent.eventWithNotification else { return }
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
-        print("Уведомление было удалено")
     }
     
     //MARK: CollectionView DataSource

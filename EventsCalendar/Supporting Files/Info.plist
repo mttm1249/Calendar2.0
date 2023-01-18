@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleLocalizations</key>
-	<array>
-		<string>ru</string>
-	</array>
+	<array/>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>UIApplicationSceneManifest</key>

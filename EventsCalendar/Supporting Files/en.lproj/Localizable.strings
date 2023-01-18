@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  EventList
+
+  Created by Денис on 18.01.2023.
+  
+*/
+
+"SettingsViewController.optionName1"  = "Month name";
+"SettingsViewController.optionName2"  = "Days of the week";
+"SettingsViewController.optionName3"  = "Weekdays";
+"SettingsViewController.optionName4"  = "Weekend";
+"SettingsViewController.optionName5"  = "Different month";
+"SettingsViewController.optionName6"  = "Note indication";
+"SettingsViewController.optionName7"  = "Note indication (selected)";
+"SettingsViewController.optionName8"  = "Current day";
+"SettingsViewController.optionName9"  = "Selected day";
+"SettingsViewController.optionName10" = "Current day (selected)";
+"SettingsViewController.optionName11" = "Selected day (number)";
+"SettingsViewController.optionName12" = "Add record button";
+"SettingsViewController.optionName13" = "Background color";
+"SettingsViewController.optionName14" = "Wallpaper";
+
+"SettingsViewController.titleText" = "Warning";
+"SettingsViewController.messageText" = "All settings will set to defaults";
+"SettingsViewController.cancelText" = "Cancel";
+
+"MainViewController.titleText" = "Warning";
+"MainViewController.messageText" = "Record will be deleted from ALL your devices!";
+"MainViewController.cancelText" = "Cancel";
+
+"EventEditViewController.titleText" = "Notifications";
+"EventEditViewController.messageText" = "If you want to receive notifications, activate this feature in settings";
+"EventEditViewController.settingsText" = "Settings";
+"EventEditViewController.cancelText" = "Cancel";
+
+"EventEditViewController.notificationTitleText" = "Notification";
+"EventEditViewController.createdNewText" = "Was set on";
+"EventEditViewController.changedExistedText" = "Was changed to";
