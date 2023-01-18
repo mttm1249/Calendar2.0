@@ -44,7 +44,6 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
             setupTheme()
         }
         fetchData()
-        calendar.reloadData()
         tableView.reloadData()
     }
         
@@ -69,9 +68,8 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         if fetchedResultsController?.fetchedObjects != nil {
             eventsArray = (fetchedResultsController?.fetchedObjects)!
-            tableView.reloadData()
+            calendar.reloadData()
         }
-        calendar.reloadData()
     }
     
     func loadWallpaperImage() {
@@ -197,16 +195,14 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
                 let eventID = event.eventNotificationID!.uuidString
                 notificationCenter.removePendingNotificationRequests(withIdentifiers: [eventID])
                 
-                guard let fetchedEvent = self.fetchedResultsController?.object(at: indexPath) else { return }
-                CoreDataManager.managedContext.delete(fetchedEvent)
+                CoreDataManager.managedContext.delete(event)
                 CoreDataManager.shared.saveContext()
-                self.fetchData()
+                tableView.deleteRows(at: [indexPath], with: .left)
             }
         }
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
         let editAction = UIContextualAction(style: .normal, title: "") { [self] (action, view, completion) in
             let indexesToRedraw = [indexPath]
             let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray)[indexPath.row]
@@ -216,8 +212,7 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
             } else {
                 event.isCompleted = false
             }
-            guard let fetchedEvent = self.fetchedResultsController?.object(at: indexPath) else { return }
-            fetchedEvent.isCompleted = event.isCompleted
+
             CoreDataManager.shared.saveContext()
             tableView.reloadRows(at: indexesToRedraw, with: .fade)
             tableView.reloadData()
