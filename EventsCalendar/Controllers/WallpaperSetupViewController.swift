@@ -14,11 +14,7 @@ class WallpaperSetupViewController: UIViewController {
     
     @IBOutlet weak var wallpaperSwitch: UISwitch!
     @IBOutlet weak var applyButton: UIBarButtonItem!
-    @IBOutlet weak var wallpaperImage: UIImageView! {
-        didSet {
-            wallpaperImage.contentMode = .scaleAspectFill
-        }
-    }
+    @IBOutlet weak var wallpaperImage: UIImageView! 
     
     override func viewDidLoad() {
         super.viewDidLoad()

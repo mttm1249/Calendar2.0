@@ -67,7 +67,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Настройки" id="Kuq-GN-G7V">
-                        <barButtonItem key="rightBarButtonItem" title="Сбросить" style="plain" id="C5I-rW-eFx">
+                        <barButtonItem key="rightBarButtonItem" title="Сбросить" id="C5I-rW-eFx">
                             <connections>
                                 <action selector="resetButtonAction:" destination="Vcx-ZN-Ktf" id="6ET-QJ-kGT"/>
                             </connections>
@@ -84,7 +84,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJ1-6r-gKm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Kr0-OT-MwM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1781" y="-403"/>
+            <point key="canvasLocation" x="1743" y="-461"/>
         </scene>
         <!--Обои-->
         <scene sceneID="s5C-ej-ycg">
@@ -217,12 +217,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Календарь" id="mFD-Wk-TbJ">
-                        <barButtonItem key="leftBarButtonItem" image="line.3.horizontal" catalog="system" id="Ruj-5f-aDP">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" image="settings" id="Ruj-5f-aDP">
+                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                             <connections>
                                 <segue destination="Vcx-ZN-Ktf" kind="show" id="VzK-Lx-UZw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="1dD-B7-0H3">
+                        <barButtonItem key="rightBarButtonItem" title="Search" image="search" id="1dD-B7-0H3">
                             <connections>
                                 <segue destination="Jsu-fV-Wd5" kind="show" id="ZXS-gE-LiU"/>
                             </connections>
@@ -287,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NhK-rq-T9G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1780.916030534351" y="295.77464788732397"/>
+            <point key="canvasLocation" x="1743" y="213"/>
         </scene>
         <!--Выбор цвета-->
         <scene sceneID="rd2-Ny-9os">
@@ -451,7 +452,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NeH-a8-tqD">
-                        <barButtonItem key="rightBarButtonItem" title="Сохранить" style="plain" id="YGw-4L-s04">
+                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="YGw-4L-s04">
                             <connections>
                                 <action selector="saveAction:" destination="UAi-6G-707" id="esm-fo-bDD"/>
                             </connections>
@@ -493,7 +494,8 @@
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="addImage" width="330.66665649414062" height="330.66665649414062"/>
-        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="search" width="25" height="25"/>
+        <image name="settings" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

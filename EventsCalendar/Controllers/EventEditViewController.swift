@@ -260,7 +260,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let colorCircle = colorCircles[indexPath.item]
         if selectorIndexPath == indexPath {
-            priorityID = 0
+            priorityID = 8
             selectorIndexPath = nil
         } else {
             priorityID = colorCircle.colorID

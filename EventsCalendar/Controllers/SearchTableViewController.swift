@@ -52,7 +52,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 allEvents = (fetchedResultsController?.fetchedObjects)!
             }
         } catch {
-            print("Error fetching products")
+            print("Error fetching")
         }
     }
     
