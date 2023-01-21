@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="130" id="e1K-S5-Emv" customClass="EventTableViewCell" customModule="MyEventPlanner" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="130" id="e1K-S5-Emv" customClass="EventTableViewCell" customModule="EventList" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e1K-S5-Emv" id="eLU-wd-Zaz">
@@ -74,7 +74,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.89923944536423839" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="oSi-zb-ggK" secondAttribute="bottom" id="0dL-Ff-aSJ"/>
                             <constraint firstItem="d93-Ar-vAJ" firstAttribute="top" secondItem="Jr9-1g-DbV" secondAttribute="top" constant="10" id="6zL-eB-ckZ"/>
@@ -96,7 +96,7 @@
                     <constraint firstAttribute="bottom" secondItem="Jr9-1g-DbV" secondAttribute="bottom" id="sYJ-Cl-1ng"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="0.90366307947019864" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="completeIndicator" destination="oSi-zb-ggK" id="cFC-re-fjM"/>

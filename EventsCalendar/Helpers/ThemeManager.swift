@@ -24,6 +24,8 @@ class ThemeManager {
     let color12 = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     let color13 = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     
+    var recentColors = [UIColor]()
+    
     static let shared = ThemeManager()
     private init() {}
 }

@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         scrollView.delegate = self
         optionsTableView.delegate = self
         optionsTableView.dataSource = self
+        optionsTableView.backgroundColor = .white
         prepareColorTheme()
         view.backgroundColor = userDefaults.colorFor(key: "color11")
     }

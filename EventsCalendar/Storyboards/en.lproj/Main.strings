@@ -50,3 +50,6 @@
 /* Class = "UINavigationItem"; title = "Обои"; ObjectID = "wTb-8P-DHK"; */
 "wTb-8P-DHK.title" = "Wallpaper";
 
+/* Class = "UILabel"; text = "Последние добавленные:"; ObjectID = "pgP-1Q-q9e"; */
+"pgP-1Q-q9e.text" = "Recent colors:";
+

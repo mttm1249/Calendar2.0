@@ -186,6 +186,7 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "addRecord", sender: self)
+        feedbackGenerator.impactOccurred(intensity: 0.5)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
