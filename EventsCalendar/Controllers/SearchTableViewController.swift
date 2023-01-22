@@ -40,7 +40,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func setFetchedResultsController() {
         let fetch = NSFetchRequest<Event>(entityName: "Event")
-        fetch.sortDescriptors = [NSSortDescriptor(key: "eventDate", ascending: true)]
+        fetch.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: CoreDataManager.managedContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController?.delegate = self
     }

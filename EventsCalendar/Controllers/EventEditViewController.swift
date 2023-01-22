@@ -182,7 +182,8 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
                                             priorityID: newEvent.priorityID,
                                             eventNotificationDate: newEvent.eventNotificationDate,
                                             eventNotificationID: newEvent.eventNotificationID,
-                                            eventWithNotification: newEvent.eventWithNotification)
+                                            eventWithNotification: newEvent.eventWithNotification,
+                                            createDate: Date())
         }
         feedbackGenerator.impactOccurred(intensity: 1.0)
     }

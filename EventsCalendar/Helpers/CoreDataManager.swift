@@ -55,7 +55,8 @@ extension CoreDataManager {
                                  priorityID: Int?,
                                  eventNotificationDate: Date?,
                                  eventNotificationID: UUID!,
-                                 eventWithNotification: Bool?) {
+                                 eventWithNotification: Bool?,
+                                 createDate: Date?) {
         let event = Event(context: managedContext)
 
         event.name = name
@@ -66,6 +67,7 @@ extension CoreDataManager {
         event.eventNotificationDate = eventNotificationDate
         event.eventNotificationID = eventNotificationID!
         event.eventWithNotification = eventWithNotification ?? false
+        event.createDate = createDate
         
         CoreDataManager.shared.saveContext()
     }
