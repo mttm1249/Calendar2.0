@@ -7,7 +7,7 @@
 ### Редактирование записи и установка напоминания.
 <img src="https://user-images.githubusercontent.com/87662841/215974823-46b3d9d5-40e8-44d9-916d-6210a5890d28.PNG" width="230" height="500"> <img src="https://user-images.githubusercontent.com/87662841/215976132-390162f3-bd3e-4a63-baf9-39c370f9d753.PNG" width="230" height="500">
 
-### Поиск и отображение всех существующих записей.
+### Поиск и возможность просмотреть все записи.
 <img src="https://user-images.githubusercontent.com/87662841/215976303-8a603dee-0252-4466-ac75-145d015d84c8.PNG" width="230" height="500"> <img src="https://user-images.githubusercontent.com/87662841/215976436-dea5d996-9ed8-4dfb-8019-42a9aa5fe82e.PNG" width="230" height="500">
 
 ### Кастомизация оформления 
