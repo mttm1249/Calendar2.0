@@ -25,6 +25,8 @@
 "SettingsViewController.messageText" = "All settings will set to defaults";
 "SettingsViewController.cancelText" = "Cancel";
 
+"MainViewController.doneText" = "Done:";
+
 "MainViewController.titleText" = "Warning";
 "MainViewController.messageText" = "Record will be deleted from ALL your devices!";
 "MainViewController.cancelText" = "Cancel";

@@ -25,6 +25,8 @@
 "SettingsViewController.messageText" = "Все настройки будут сброшены";
 "SettingsViewController.cancelText" = "Отмена";
 
+"MainViewController.doneText" = "Выполнено:";
+
 "MainViewController.titleText" = "Внимание";
 "MainViewController.messageText" = "Запись будет удалена со всех Ваших устройств!";
 "MainViewController.cancelText" = "Отмена";

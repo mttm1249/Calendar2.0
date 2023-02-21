@@ -32,6 +32,9 @@ class LocalizableText {
     }
     
     class MainPage {
+        // Done events counter
+        static let doneText = NSLocalizedString("MainViewController.doneText", comment: "")
+
         // Record deleting Alert
         static let titleText = NSLocalizedString("MainViewController.titleText", comment: "")
         static let messageText = NSLocalizedString("MainViewController.messageText", comment: "")

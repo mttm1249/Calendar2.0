@@ -11,11 +11,12 @@ import UserNotifications
 import CoreData
 
 class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
-        
+    
     var fetchedResultsController: NSFetchedResultsController<Event>?
-
+    
     private var defaultColors = [SettingsOption]()
     private var eventsArray: [Event] = []
+    private var completedEventsArray: [Event] = []
     private var selectedDate = Date()
     let roundAddButton = UIButton()
     
@@ -35,6 +36,11 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         setupCalendar()
         setupTheme()
         setFetchedResultsController()
+        
+        let contentInset = UIEdgeInsets(top: -50, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = contentInset
+        tableView.setContentOffset(CGPoint(x: 0, y: -contentInset.top), animated: false)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,7 +52,7 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         fetchData()
         tableView.reloadData()
     }
-        
+    
     func setFetchedResultsController() {
         let fetch = NSFetchRequest<Event>(entityName: "Event")
         fetch.sortDescriptors = [NSSortDescriptor(key: "createDate", ascending: true)]
@@ -58,7 +64,9 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         do {
             try fetchedResultsController?.performFetch()
             if fetchedResultsController?.fetchedObjects != nil {
-                eventsArray = (fetchedResultsController?.fetchedObjects)!
+                let fetchedArray = (fetchedResultsController?.fetchedObjects)!
+                eventsArray = fetchedArray.filter { !$0.isCompleted }
+                completedEventsArray = fetchedArray.filter { $0.isCompleted }
             }
         } catch {
             print("Error fetching")
@@ -67,7 +75,10 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         if fetchedResultsController?.fetchedObjects != nil {
-            eventsArray = (fetchedResultsController?.fetchedObjects)!
+            let fetchedArray = (fetchedResultsController?.fetchedObjects)!
+            eventsArray = fetchedArray.filter { !$0.isCompleted }
+            completedEventsArray = fetchedArray.filter { $0.isCompleted }
+            
             calendar.reloadData()
         }
     }
@@ -143,13 +154,22 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
             let editVC = segue.destination as! EventEditViewController
             editVC.currentDate = selectedDate
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray)[indexPath.row]
+            let event = getEvent(from: indexPath)
             editVC.currentEvent = event
         }
     }
     
-    // MARK: Calendar Setup
+    @IBAction func unwindSegueToMainScreen(segue: UIStoryboardSegue) {
+        guard segue.identifier == "unwindSegue" else { return }
+        userDefaults.set(false, forKey: "defaultThemeActive")
+        setupTheme()
+        feedbackGenerator.impactOccurred(intensity: 1.0)
+    }
     
+}
+
+extension MainViewController {
+    // MARK: Calendar Setup
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
         tableView.reloadData()
@@ -169,19 +189,11 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     }
     
     // MARK: TableView DataSource
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return EventsManager().eventsForDate(date: selectedDate, in: eventsArray).count
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventTableViewCell {
-            let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray)[indexPath.row]
-            cell.setup(model: event)
-            return cell
-        }
-        return UITableViewCell()
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
+        let event = getEvent(from: indexPath)
+        cell.setup(model: event)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -189,46 +201,96 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         feedbackGenerator.impactOccurred(intensity: 0.5)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            showAlert(title: LocalizableText.MainPage.titleText, message: LocalizableText.MainPage.messageText, okActionText: "OK", cancelText: LocalizableText.MainPage.cancelText) {
-                let event = EventsManager().eventsForDate(date: self.selectedDate, in: self.eventsArray)[indexPath.row]
+    // Delete action
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "") { (action, view, completionHandler) in
+            self.showAlert(title: LocalizableText.MainPage.titleText, message: LocalizableText.MainPage.messageText, okActionText: "OK", cancelText: LocalizableText.MainPage.cancelText) { [self] in
+                let event = getEvent(from: indexPath)
                 let eventID = event.eventNotificationID!.uuidString
                 notificationCenter.removePendingNotificationRequests(withIdentifiers: [eventID])
-                
                 CoreDataManager.managedContext.delete(event)
                 CoreDataManager.shared.saveContext()
                 tableView.deleteRows(at: [indexPath], with: .left)
+                delay {
+                    self.tableView.reloadData()
+                }
             }
+        }
+        deleteAction.image = UIImage(systemName: "trash")
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+
+    // Delay for cell deleting animation (.left)
+    func delay(closure: @escaping() -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) {
+            closure()
         }
     }
     
+    // The method checks the event, in which section it is located
+    func getEvent(from index: IndexPath) -> Event {
+        var event: Event!
+        if index.section == 0 {
+            event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray)[index.row]
+        } else {
+            event = EventsManager().eventsForDate(date: selectedDate, in: completedEventsArray)[index.row]
+        }
+        return event
+    }
+    
+    // Left slide action
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let editAction = UIContextualAction(style: .normal, title: "") { [self] (action, view, completion) in
-            let indexesToRedraw = [indexPath]
-            let event = EventsManager().eventsForDate(date: selectedDate, in: eventsArray)[indexPath.row]
+        let doneAction = UIContextualAction(style: .normal, title: "") { [self] (action, view, completion) in
+            let event = getEvent(from: indexPath)
             
             if !event.isCompleted {
                 event.isCompleted = true
             } else {
                 event.isCompleted = false
             }
-
+            
+            feedbackGenerator.impactOccurred(intensity: 1.0)
             CoreDataManager.shared.saveContext()
-            tableView.reloadRows(at: indexesToRedraw, with: .fade)
             tableView.reloadData()
         }
-        editAction.backgroundColor = .systemGreen
-        let config = UISwipeActionsConfiguration(actions: [editAction])
+        doneAction.image = UIImage(systemName: "checkmark")
+        doneAction.backgroundColor = .systemGreen
+        let config = UISwipeActionsConfiguration(actions: [doneAction])
         config.performsFirstActionWithFullSwipe = true
         return config
     }
     
-    @IBAction func unwindSegueToMainScreen(segue: UIStoryboardSegue) {
-        guard segue.identifier == "unwindSegue" else { return }
-        userDefaults.set(false, forKey: "defaultThemeActive")
-        setupTheme()
-        feedbackGenerator.impactOccurred(intensity: 1.0)
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UITableViewHeaderFooterView()
+        if EventsManager().eventsForDate(date: selectedDate, in: completedEventsArray).count == 0 {
+            headerView.textLabel?.textColor = .clear
+        } else {
+            headerView.textLabel?.textColor = .darkGray
+        }
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return EventsManager().eventsForDate(date: selectedDate, in: eventsArray).count
+        } else {
+            return EventsManager().eventsForDate(date: selectedDate, in: completedEventsArray).count
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return ""
+        } else {
+            return "\(LocalizableText.MainPage.doneText) \(EventsManager().eventsForDate(date: selectedDate, in: completedEventsArray).count)"
+        }
+    }
 }

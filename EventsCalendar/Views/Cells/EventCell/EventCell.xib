@@ -97,7 +97,6 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="0.90366307947019864" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="completeIndicator" destination="oSi-zb-ggK" id="cFC-re-fjM"/>
                 <outlet property="eventName" destination="UHd-Cx-lfL" id="OVu-8t-j7Q"/>
