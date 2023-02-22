@@ -10,7 +10,7 @@ import FSCalendar
 import UserNotifications
 import CoreData
 
-class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+class MainViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     var fetchedResultsController: NSFetchedResultsController<Event>?
     
@@ -125,7 +125,7 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         
         let buttonSize = CGFloat(60)
         
-        roundAddButton.frame = CGRect(x: screenWidth - (buttonSize + 35), y: screenHeight - (buttonSize * 2), width: buttonSize, height: buttonSize)
+        roundAddButton.frame = CGRect(x: screenWidth - (buttonSize + 35), y: screenHeight - (buttonSize * 2) , width: buttonSize, height: buttonSize)
         roundAddButton.layer.cornerRadius = buttonSize / 2
         roundAddButton.setImage(UIImage(named: "plusImg"), for: .normal)
         roundAddButton.tintColor = .white
@@ -173,8 +173,8 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     
 }
 
-extension MainViewController {
-    // MARK: Calendar Setup
+// MARK: - FSCalendarDataSource
+extension MainViewController: UITableViewDataSource, UITableViewDelegate, FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
         tableView.reloadData()
@@ -192,8 +192,8 @@ extension MainViewController {
         }
         return 0
     }
-    
-    // MARK: TableView DataSource
+        
+    // MARK: - TableView DataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
         let event = getEvent(from: indexPath)

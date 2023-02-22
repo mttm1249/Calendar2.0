@@ -8,12 +8,11 @@
 import UIKit
 import Pikko
 
-
 protocol ColorUpdate: AnyObject {
     func reloadColors()
 }
 
-class ColorSetupViewController: UIViewController, PikkoDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ColorSetupViewController: UIViewController, PikkoDelegate {
 
     var recentColor = UIColor()
     @IBOutlet weak var bottomView: UIView!
@@ -62,7 +61,10 @@ class ColorSetupViewController: UIViewController, PikkoDelegate, UICollectionVie
             withDuration: 1 / 3, delay: 0, options: .curveEaseIn,
             animations: { self.view.layoutIfNeeded() })
     }
-    
+}
+
+// MARK: - UICollectionViewDataSource
+extension ColorSetupViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ThemeManager.shared.recentColors.count
     }
@@ -87,6 +89,5 @@ class ColorSetupViewController: UIViewController, PikkoDelegate, UICollectionVie
         navigationController?.popViewController(animated: true)
         feedbackGenerator.impactOccurred(intensity: 2.0)
     }
-    
 }
 

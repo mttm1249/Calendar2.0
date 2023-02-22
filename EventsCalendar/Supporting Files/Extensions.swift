@@ -8,7 +8,7 @@
 import UIKit
 import Network
 
-// MARK: Global
+// MARK: - Global
 let time = Time()
 let feedbackGenerator = UIImpactFeedbackGenerator()
 let userDefaults = UserDefaults.standard

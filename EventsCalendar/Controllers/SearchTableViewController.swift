@@ -66,7 +66,7 @@ class SearchViewController: UIViewController, NSFetchedResultsControllerDelegate
         tableView.reloadData()
     }
     
-    // MARK: Search controller
+    // MARK: - Search controller
     func showSearchBar() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -84,9 +84,8 @@ class SearchViewController: UIViewController, NSFetchedResultsControllerDelegate
     
 }
 
+// MARK: - Table view data source
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    // MARK: - Table view data source
-    
     // Register custom TableView cell
     private func registerCell() {
         let cell = UINib(nibName: "EventCell", bundle: nil)

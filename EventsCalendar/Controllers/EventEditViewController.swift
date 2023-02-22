@@ -10,7 +10,7 @@ import CoreData
 import UserNotifications
 import Network
 
-class EventEditViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class EventEditViewController: UIViewController {
     
     var currentEvent: Event!
     var currentDate: Date!
@@ -233,8 +233,10 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
     }
     
-    //MARK: CollectionView DataSource
-    
+}
+
+// MARK: - CollectionView DataSource
+extension EventEditViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colorCircles.count
     }
@@ -267,6 +269,7 @@ class EventEditViewController: UIViewController, UICollectionViewDataSource, UIC
             priorityID = colorCircle.colorID
             selectorIndexPath = indexPath
         }
+        priorityColorsCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         feedbackGenerator.impactOccurred(intensity: 0.5)
         priorityColorsCollectionView.reloadData()
     }

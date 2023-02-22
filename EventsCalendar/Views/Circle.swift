@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: - Color circles for events
 struct Circle {
     var circleColor: UIColor!
     var colorID: Int!

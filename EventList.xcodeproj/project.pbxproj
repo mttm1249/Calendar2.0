@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52B27DE729A64DCA00D71955 /* SettingsViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B27DE629A64DCA00D71955 /* SettingsViewController+Extensions.swift */; };
 		DA00C105296B4A660091D13A /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA00C104296B4A660091D13A /* ThemeManager.swift */; };
 		DA06743D29682B0600817FC8 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06743C29682B0600817FC8 /* Time.swift */; };
 		DA06743F29682F1B00817FC8 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06743E29682F1B00817FC8 /* EventTableViewCell.swift */; };
@@ -22,7 +23,7 @@
 		DA50AE75296AC80A00825C36 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA50AE74296AC80A00825C36 /* ColorCollectionViewCell.swift */; };
 		DA55A7242977D4A80078E971 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA55A7262977D4A80078E971 /* Localizable.strings */; };
 		DA6F8ABF296C02B20077DCDB /* MainViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6F8ABE296C02B20077DCDB /* MainViewController+Extensions.swift */; };
-		DA8D8E02297032C000CD764B /* TintTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D8E01297032C000CD764B /* TintTextField.swift */; };
+		DA8D8E02297032C000CD764B /* EventTitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D8E01297032C000CD764B /* EventTitleTextField.swift */; };
 		DAA669162976846E002C919F /* EventRecordModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAA669142976846E002C919F /* EventRecordModel.xcdatamodeld */; };
 		DAA669182976857F002C919F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA669172976857F002C919F /* CoreDataManager.swift */; };
 		DAA6691A297689D1002C919F /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA66919297689D1002C919F /* EventModel.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52B27DE629A64DCA00D71955 /* SettingsViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+Extensions.swift"; sourceTree = "<group>"; };
 		DA00C104296B4A660091D13A /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		DA06743C29682B0600817FC8 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		DA06743E29682F1B00817FC8 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -61,7 +63,7 @@
 		DA55A7292977D6F30078E971 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DA6D7666296EC3ED005BD178 /* MyEventPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyEventPlanner.entitlements; sourceTree = "<group>"; };
 		DA6F8ABE296C02B20077DCDB /* MainViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Extensions.swift"; sourceTree = "<group>"; };
-		DA8D8E01297032C000CD764B /* TintTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TintTextField.swift; sourceTree = "<group>"; };
+		DA8D8E01297032C000CD764B /* EventTitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTitleTextField.swift; sourceTree = "<group>"; };
 		DAA669152976846E002C919F /* EventRecordModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventRecordModel.xcdatamodel; sourceTree = "<group>"; };
 		DAA669172976857F002C919F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		DAA66919297689D1002C919F /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
@@ -91,6 +93,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52B27DE829A64DF700D71955 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DAC54D5D296AD53B00125ADF /* SettingsViewController.swift */,
+				52B27DE629A64DCA00D71955 /* SettingsViewController+Extensions.swift */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		52B27DE929A64E0700D71955 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DA20DC1529670DDF00ECD829 /* MainViewController.swift */,
+				DA6F8ABE296C02B20077DCDB /* MainViewController+Extensions.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
 		DA06744929684F3D00817FC8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,11 +135,10 @@
 		DA06744B29684F8D00817FC8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DA20DC1529670DDF00ECD829 /* MainViewController.swift */,
-				DA6F8ABE296C02B20077DCDB /* MainViewController+Extensions.swift */,
+				52B27DE929A64E0700D71955 /* MainViewController */,
 				DADF8B7F29675FA10019A118 /* EventEditViewController.swift */,
 				DAAE4CFD29698EF000682675 /* SearchTableViewController.swift */,
-				DAC54D5D296AD53B00125ADF /* SettingsViewController.swift */,
+				52B27DE829A64DF700D71955 /* SettingsViewController */,
 				DAC54D68296AF32A00125ADF /* ColorSetupViewController.swift */,
 				DAFD84B7296D5875008B7F73 /* WallpaperSetupViewController.swift */,
 			);
@@ -192,7 +211,7 @@
 			children = (
 				DAAEEA2B2968543900D8CD3B /* Cells */,
 				DA50AE72296AC01000825C36 /* Circle.swift */,
-				DA8D8E01297032C000CD764B /* TintTextField.swift */,
+				DA8D8E01297032C000CD764B /* EventTitleTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,7 +330,7 @@
 				DA6F8ABF296C02B20077DCDB /* MainViewController+Extensions.swift in Sources */,
 				DA50AE75296AC80A00825C36 /* ColorCollectionViewCell.swift in Sources */,
 				DA06743F29682F1B00817FC8 /* EventTableViewCell.swift in Sources */,
-				DA8D8E02297032C000CD764B /* TintTextField.swift in Sources */,
+				DA8D8E02297032C000CD764B /* EventTitleTextField.swift in Sources */,
 				DA50AE73296AC01000825C36 /* Circle.swift in Sources */,
 				DA20DC1629670DDF00ECD829 /* MainViewController.swift in Sources */,
 				DAA669162976846E002C919F /* EventRecordModel.xcdatamodeld in Sources */,
@@ -321,6 +340,7 @@
 				DA20DC1229670DDF00ECD829 /* AppDelegate.swift in Sources */,
 				DA06743D29682B0600817FC8 /* Time.swift in Sources */,
 				DAC54D69296AF32A00125ADF /* ColorSetupViewController.swift in Sources */,
+				52B27DE729A64DCA00D71955 /* SettingsViewController+Extensions.swift in Sources */,
 				DAAE4CFE29698EF000682675 /* SearchTableViewController.swift in Sources */,
 				DAD3E3A02969D6AE00EFDF5E /* Extensions.swift in Sources */,
 				DA20DC1429670DDF00ECD829 /* SceneDelegate.swift in Sources */,

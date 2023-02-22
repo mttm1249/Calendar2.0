@@ -1,5 +1,5 @@
 //
-//  TintTextField.swift
+//  EventTitleTextField.swift
 //  MyEventPlanner
 //
 //  Created by Денис on 12.01.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TintTextField: UITextField {
+class EventTitleTextField: UITextField {
     
     var tintedClearImage: UIImage?
     
