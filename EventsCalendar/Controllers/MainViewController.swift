@@ -197,6 +197,7 @@ extension MainViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
         let event = getEvent(from: indexPath)
+        cell.eventDateLabel.isHidden = true
         cell.setup(model: event)
         return cell
     }
@@ -300,6 +301,7 @@ extension MainViewController {
     }
 }
 
+// Delegate method for edit event from searchVC
 extension MainViewController: PresentEditVC {
     func getRecord(event: Event) {
         eventToShow = event

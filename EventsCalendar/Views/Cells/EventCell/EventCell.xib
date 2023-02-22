@@ -36,24 +36,35 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zzO-Mx-CN4" userLabel="Notification Info">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zzO-Mx-CN4" userLabel="Event Info Container">
                                         <rect key="frame" x="0.0" y="90" width="313" height="20"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата напоминания" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcA-8d-zZa">
-                                                <rect key="frame" x="0.0" y="0.0" width="291" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Дата создания" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lY-BX-23y">
+                                                <rect key="frame" x="0.0" y="0.0" width="178.66666666666666" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cA7-hh-Ymy">
-                                                <rect key="frame" x="293" y="2.333333333333333" width="20" height="15.333333333333332"/>
-                                                <color key="tintColor" white="0.47648278061224492" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="6c3-dr-MG3"/>
-                                                    <constraint firstAttribute="height" constant="20" id="H0S-pV-dOP"/>
-                                                </constraints>
-                                                <imageReference key="image" image="bell.circle" catalog="system" symbolScale="small"/>
-                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zy2-zE-hV5">
+                                                <rect key="frame" x="180.66666666666663" y="0.0" width="132.33333333333337" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Дата напоминания" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcA-8d-zZa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="110.33333333333333" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cA7-hh-Ymy">
+                                                        <rect key="frame" x="112.33333333333334" y="2.333333333333333" width="20" height="15.333333333333332"/>
+                                                        <color key="tintColor" white="0.47648278061224492" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="6c3-dr-MG3"/>
+                                                            <constraint firstAttribute="height" constant="20" id="H0S-pV-dOP"/>
+                                                        </constraints>
+                                                        <imageReference key="image" image="bell.circle" catalog="system" symbolScale="small"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -99,10 +110,11 @@
             <color key="backgroundColor" white="1" alpha="0.90366307947019864" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="completeIndicator" destination="oSi-zb-ggK" id="cFC-re-fjM"/>
+                <outlet property="eventDateLabel" destination="5lY-BX-23y" id="gPz-TP-Zy9"/>
                 <outlet property="eventName" destination="UHd-Cx-lfL" id="OVu-8t-j7Q"/>
                 <outlet property="eventText" destination="JPK-dj-k3c" id="uu0-mG-EGv"/>
                 <outlet property="notificationDateLabel" destination="lcA-8d-zZa" id="1T5-97-56y"/>
-                <outlet property="notificationInfoView" destination="zzO-Mx-CN4" id="MMw-Hi-IGi"/>
+                <outlet property="notificationInfoView" destination="zy2-zE-hV5" id="JsP-Zx-RgO"/>
                 <outlet property="priorityIndicator" destination="fgb-CO-nQQ" id="ynq-fC-XhT"/>
             </connections>
             <point key="canvasLocation" x="264.8854961832061" y="58.450704225352112"/>

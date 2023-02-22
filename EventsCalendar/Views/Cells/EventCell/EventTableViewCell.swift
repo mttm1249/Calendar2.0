@@ -15,6 +15,7 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var priorityIndicator: UIView!
     @IBOutlet weak var notificationInfoView: UIStackView!
     @IBOutlet weak var notificationDateLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,6 +42,8 @@ class EventTableViewCell: UITableViewCell {
         }
         eventName.text = model.name
         eventText.text = model.eventText
+        eventDateLabel.text = Time().getDateString(from: model.eventDate!)
+        
         if model.isCompleted {
             completeIndicator.isHidden = false
             completeIndicator.backgroundColor = .systemGreen
