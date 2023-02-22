@@ -8,10 +8,16 @@
 import UIKit
 import CoreData
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
-   
-    @IBOutlet weak var tableView: UITableView!
+protocol PresentEditVC: AnyObject {
+    func getRecord(event: Event)
+    func goToAddEventVC()
+}
 
+class SearchViewController: UIViewController, NSFetchedResultsControllerDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    var delegate: PresentEditVC?
+    
     var fetchedResultsController: NSFetchedResultsController<Event>?
     let searchController = UISearchController(searchResultsController: nil)
     private var searchBarIsEmpty: Bool {
@@ -23,10 +29,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     var showAllActive = false
-
+    
     private var allEvents: [Event] = []
     private var foundedEvents: [Event] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCell()
@@ -68,33 +74,36 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
     }
-
+    
     @IBAction func showAllAction(_ sender: Any) {
         searchController.searchBar.text = ""
         showAllActive.toggle()
         tableView.reloadWithAnimation()
         feedbackGenerator.impactOccurred(intensity: 0.5)
     }
+    
+}
 
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table view data source
-
+    
     // Register custom TableView cell
     private func registerCell() {
         let cell = UINib(nibName: "EventCell", bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: "eventCell")
     }
-
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return foundedEvents.count
         }
-         if showAllActive {
-             return allEvents.count
-         }
+        if showAllActive {
+            return allEvents.count
+        }
         return 0
     }
-
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as? EventTableViewCell {
             if isFiltering {
                 let event = foundedEvents[indexPath.row]
@@ -108,7 +117,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         return UITableViewCell()
-
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isFiltering {
+            let event = foundedEvents[indexPath.row]
+            delegate?.getRecord(event: event)
+        } else if !isFiltering && showAllActive {
+            allEvents.sort(by: { $0.priorityID < $1.priorityID })
+            let event = allEvents[indexPath.row]
+            delegate?.getRecord(event: event)
+        }
+        delegate?.goToAddEventVC()
     }
 }
 

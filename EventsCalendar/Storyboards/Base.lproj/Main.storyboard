@@ -225,7 +225,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Search" image="search" id="1dD-B7-0H3">
                             <connections>
-                                <segue destination="Jsu-fV-Wd5" kind="show" id="ZXS-gE-LiU"/>
+                                <segue destination="Jsu-fV-Wd5" kind="show" identifier="search" id="ZXS-gE-LiU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

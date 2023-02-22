@@ -14,6 +14,7 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
     
     var fetchedResultsController: NSFetchedResultsController<Event>?
     
+    private var eventToShow: Event!
     private var defaultColors = [SettingsOption]()
     private var eventsArray: [Event] = []
     private var completedEventsArray: [Event] = []
@@ -40,7 +41,6 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
         let contentInset = UIEdgeInsets(top: -50, left: 0, bottom: 0, right: 0)
         tableView.contentInset = contentInset
         tableView.setContentOffset(CGPoint(x: 0, y: -contentInset.top), animated: false)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -154,8 +154,13 @@ class MainViewController: UIViewController, FSCalendarDataSource, FSCalendarDele
             let editVC = segue.destination as! EventEditViewController
             editVC.currentDate = selectedDate
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let event = getEvent(from: indexPath)
-            editVC.currentEvent = event
+            eventToShow = getEvent(from: indexPath)
+            editVC.currentEvent = eventToShow
+        }
+        
+        if segue.identifier == "search" {
+            let searchVC = segue.destination as! SearchViewController
+            searchVC.delegate = self
         }
     }
     
@@ -219,7 +224,7 @@ extension MainViewController {
         deleteAction.image = UIImage(systemName: "trash")
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-
+    
     // Delay for cell deleting animation (.left)
     func delay(closure: @escaping() -> ()) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) {
@@ -292,5 +297,19 @@ extension MainViewController {
         } else {
             return "\(LocalizableText.MainPage.doneText) \(EventsManager().eventsForDate(date: selectedDate, in: completedEventsArray).count)"
         }
+    }
+}
+
+extension MainViewController: PresentEditVC {
+    func getRecord(event: Event) {
+        eventToShow = event
+    }
+    
+    func goToAddEventVC() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let editVC = storyboard.instantiateViewController(withIdentifier: "editRecord") as! EventEditViewController
+        editVC.currentEvent = eventToShow
+        editVC.currentDate = eventToShow.eventDate
+        navigationController?.pushViewController(editVC, animated: true)
     }
 }

@@ -69,6 +69,7 @@ class WallpaperSetupViewController: UIViewController {
     @IBAction func applyButtonAction(_ sender: Any) {
         saveImage()
         ThemeManager.shared.themeIsChanged = true
+        userDefaults.set(true, forKey: "wallpaperSwitch")
         navigationController?.popViewController(animated: true)
         feedbackGenerator.impactOccurred(intensity: 1.0)
     }
