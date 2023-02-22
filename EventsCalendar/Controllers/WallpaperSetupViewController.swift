@@ -80,6 +80,7 @@ class WallpaperSetupViewController: UIViewController {
     }
 }
 
+// MARK: - PHPickerViewControllerDelegate
 extension WallpaperSetupViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)

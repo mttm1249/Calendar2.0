@@ -27,7 +27,7 @@
 "YGw-4L-s04.title" = "Сохранить";
 
 /* Class = "UILabel"; text = "Отображать обои"; ObjectID = "bPi-sQ-B09"; */
-"bPi-sQ-B09.text" = "Отображать обои";
+"bPi-sQ-B09.text" = "Отображать обои на главном экране";
 
 /* Class = "UILabel"; text = "Название:"; ObjectID = "dWJ-Pv-LZw"; */
 "dWJ-Pv-LZw.text" = "Название:";
